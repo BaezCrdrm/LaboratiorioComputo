@@ -1,4 +1,5 @@
-﻿Imports Microsoft.VisualBasic
+﻿Imports System.Data
+Imports Microsoft.VisualBasic
 
 Public Class UsuarioSistema : Inherits Usuario
     Private _puesto As String
@@ -6,6 +7,7 @@ Public Class UsuarioSistema : Inherits Usuario
     Private _username As String
     Private _idUsuarioCaptura As String 'Capturado por...
 
+#Region "Propiedades"
     Public Property IDUsuarioCaptura() As String
         Get
             Return _idUsuarioCaptura
@@ -38,5 +40,28 @@ Public Class UsuarioSistema : Inherits Usuario
             _puesto = value
         End Set
     End Property
+#End Region
+
+#Region "Funciones"
+    Public Function ValidaUsuario(ByVal userName As String) As Integer
+        Dim connection As New Conexion
+        Dim ds As DataSet
+        Dim query As String
+
+        query = String.Format("SELECT ID_USUARIOSISTEMA FROM dbo.USUARIOSSISTEMA WHERE USERNAME = '{0}'",
+                              userName)
+        ds = connection.GetRows(query)
+        If ds.Tables.Count > 0 Then
+            Dim dt As DataTable = ds.Tables(0)
+            If dt.Rows.Count > 0 Then
+                Return Convert.ToInt32(dt.Rows(0)("ID_USUARIOSISTEMA"))
+            Else
+                Return Nothing
+            End If
+        Else
+            Return Nothing
+        End If
+    End Function
+#End Region
 
 End Class
