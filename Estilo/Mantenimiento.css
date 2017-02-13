@@ -1,0 +1,26 @@
+﻿#form1 {
+    width:220px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+}
+
+    .lblMant {
+        font-size:17px;
+        font-family:Arial;
+    }
+
+    #btnGuardar {
+        width:100px !important;
+        float:right;
+    }
+
+    #form1 > input {
+        width:250px;
+        margin-top:2px;
+        margin-bottom:10px;
+    } 
+
+    #chkMostrar {
+        margin-left:60px;
+    }

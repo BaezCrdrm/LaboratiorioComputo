@@ -8,8 +8,7 @@
     <meta charset="utf-8" />
     <title>Máquinas sistema</title>
     <link href="Estilo/General.css" rel="stylesheet" />
-    <link href="Estilo/Login.css" rel="stylesheet" />
-    <link href="Estilo/Default.css" rel="stylesheet" />
+    <link href="Estilo/MaquinasSistema.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -25,7 +24,7 @@
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
         <h2 class="titulo_pagina">Máquinas sistema</h2>
         <form id="form1" runat="server">
-            
+            <asp:Table ID="Table1" runat="server"></asp:Table>
         </form>
     </section>
 </body>

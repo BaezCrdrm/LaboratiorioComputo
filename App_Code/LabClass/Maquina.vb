@@ -65,6 +65,7 @@ Public Class Maquina
         Dim ds As DataSet
         Dim cnn As New Conexion
         Dim query As String = String.Format("SELECT ID_MAQUINA, NUMERO_MAQ, INFORMACION_MAQ, BANDERA_MAQ, MOSTRAR_MAQ " _
+                                            & "FROM MAQUINAS " _
                                             & "WHERE ID_MAQUINA = {0}", id)
         ds = cnn.GetRows(query)
         If ds.Tables.Count = 1 Then

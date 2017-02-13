@@ -9,7 +9,6 @@
     <title>Menú Administrador</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Login.css" rel="stylesheet" />
-    <link href="Estilo/Default.css" rel="stylesheet" />
 </head>
 <body>
     <header>

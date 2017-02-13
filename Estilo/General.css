@@ -36,7 +36,7 @@ header {
 }
 
 .buttons {
-    /*width:100%;*/
+    width:100%;
     height: 33px;
     margin-top:5px;
     margin-bottom:5px;
@@ -44,4 +44,20 @@ header {
     z-index: 105;
 
     font-weight: bold;
+}
+
+    .buttonsForm {
+        width: 181px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+/*Tablas*/
+.table_header {
+    font-weight:bold;
+    text-align:center;
+}
+
+td {
+    border-bottom:1px solid;
 }

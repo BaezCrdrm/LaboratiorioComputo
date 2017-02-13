@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <title>Mantenimiento carreras</title>
     <link href="Estilo/General.css" rel="stylesheet" />
+    <link href="Estilo/Mantenimiento.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -24,9 +25,9 @@
         <h2 class="titulo_pagina">Mantenimiento carreras</h2>
 
         <form id="form1" runat="server">
-            <label>Nombre</label><br />
+            <label class="lblMant">Nombre</label><br />
             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox><br />
-            <label>Abreviatura</label><br />
+            <label class="lblMant">Abreviatura</label><br />
             <asp:TextBox ID="txtAbv" runat="server"></asp:TextBox><br />
             <asp:Label ID="lblError" runat="server"></asp:Label><br />
             <asp:Button ID="btnGuardar" runat="server" Text="Aceptar" />
