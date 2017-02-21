@@ -28,9 +28,16 @@
             <asp:TextBox ID="txtInfo" runat="server" /><br />
             <asp:CheckBox ID="chkActiva" CssClass="lblMant" Text="Activa" AutoPostBack="true" runat="server" />
             <asp:CheckBox ID="chkMostrar" CssClass="lblMant" Text="Mostrar" AutoPostBack="true" runat="server" />
+
+            <br /><asp:Label ID="lblStatus" runat="server" /><br />
             
+            <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+                CssClass="goBack" runat="server" AlternateText="Regresar" 
+                OnClientClick="closeTab()" ImageAlign="Top" title="Regresar" />
             <asp:Button ID="btnGuardar" Text="Guardar" runat="server" />
+
         </form>
     </section>
+    <script src="Scripts.js"></script>
 </body>
 </html>

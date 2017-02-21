@@ -38,7 +38,7 @@ Partial Class CarrerasSistema
                             Case 2
                                 Dim bt As New System.Web.UI.WebControls.Button
                                 bt.ID = "btn_" & Convert.ToString(dr("ID_CARRERA"))
-                                bt.Text = "Ver"
+                                bt.Text = "Modificar"
                                 bt.CssClass = "btn_tabla_ver"
                                 bt.OnClientClick = "form1.target ='_blank';"
                                 AddHandler bt.Click, AddressOf ButtonVer_Click
@@ -62,5 +62,9 @@ Partial Class CarrerasSistema
 
     Protected Sub btnNuevo_Click(sender As Object, e As EventArgs)
         Response.Redirect("MantCarreras.aspx?action=create")
+    End Sub
+
+    Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
+        Response.Redirect("MenuAdministrador.aspx")
     End Sub
 End Class

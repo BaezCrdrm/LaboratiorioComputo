@@ -24,7 +24,8 @@
         <h2 class="titulo_pagina">Carreras del sistema</h2>
 
         <form id="form1" runat="server">
-            <asp:Button ID="btnNuevo" Text="Nueva carrera" runat="server" OnClick="btnNuevo_Click"/>
+            <asp:Button ID="btnNuevo" Text="Nueva carrera" runat="server" 
+                OnClick="btnNuevo_Click" OnClientClick="form1.target ='_blank';"/>
             <asp:Table ID="Table1" runat="server">
                 <asp:TableRow runat="server">
                     <asp:TableCell runat="server" CssClass="table_header">Nombre</asp:TableCell>
@@ -32,7 +33,15 @@
                     <asp:TableCell runat="server" CssClass="table_header"></asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-        </form>        
+
+            <br />
+            <div ID="divGoToMenu">
+                <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+                        CssClass="goBack" runat="server" AlternateText="Regresar" 
+                        ImageAlign="Top" title="Menú administrador" OnClientClick="form1.target ='_self';"/>
+                <%--<asp:Label Text="Menú" CssClass="lblGoToMenu" runat="server" /> --%>               
+            </div>
+        </form>
     </section>
 </body>
 </html>

@@ -25,7 +25,15 @@
         <h2 class="titulo_pagina">Máquinas sistema</h2>
         <form id="form1" runat="server">
             <asp:Table ID="Table1" runat="server"></asp:Table>
-        </form>
+
+            <br />
+            <div ID="divGoToMenu">
+                <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+                    CssClass="goBack" runat="server" AlternateText="Regresar" 
+                    ImageAlign="Top" title="Menú administrador" OnClientClick="form1.target ='_self';"/>
+                <%--<asp:Label Text="Menú" CssClass="lblGoToMenu" runat="server" />   --%>             
+            </div>
+        </form>        
     </section>
 </body>
 </html>

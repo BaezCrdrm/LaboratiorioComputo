@@ -52,6 +52,20 @@ header {
         margin-right:auto;
     }
 
+    #divGoToMenu {
+        margin-left:auto !important;
+        margin-right:auto !important;
+    }
+
+        .lblGoToMenu{
+            font-size:22px;
+        }
+
+        .goBack{
+            width:auto !important;
+            height:30px;
+        }
+
 /*Tablas*/
 .table_header {
     font-weight:bold;

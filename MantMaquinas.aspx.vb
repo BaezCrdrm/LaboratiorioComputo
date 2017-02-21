@@ -62,8 +62,11 @@ Partial Class MantMaquinas
             End If
         End If
         maquina.Mostrar = mostrar
-        maquina.Update(maquina.ID)
-
+        If (maquina.Update(maquina.ID)) Then
+            lblStatus.Text = "Se actualizó correctamente"
+        Else
+            lblStatus.Text = "No se pudo actualizar"
+        End If
     End Sub
     Protected Sub chkActiva_CheckedChanged(sender As Object, e As EventArgs) Handles chkActiva.CheckedChanged
 

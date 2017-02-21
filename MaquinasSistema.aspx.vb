@@ -62,4 +62,8 @@ Partial Class MaquinasSistema
         Dim tempId As String() = Split((DirectCast(sender, ImageButton)).ID, "_")
         Response.Redirect("MantMaquinas.aspx?id=" & tempId(1))
     End Sub
+
+    Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
+        Response.Redirect("MenuAdministrador.aspx")
+    End Sub
 End Class

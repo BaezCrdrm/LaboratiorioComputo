@@ -14,6 +14,7 @@ Partial Class MantCarreras
                 If Not Page.IsPostBack Then
                     cargaDatos(Convert.ToInt32(Request.QueryString("id").ToString()))
                 End If
+                btnGuardar.Text = "Actualizar"
             End If
         End If
     End Sub
@@ -31,20 +32,21 @@ Partial Class MantCarreras
         If action = "modify" Then
             carrera.ID = Convert.ToInt32(Request.QueryString("id").ToString())
             Try
-                carrera.Update(carrera.ID)
-                Response.Redirect("CarrerasSistema.aspx")
+                If (carrera.Update(carrera.ID)) Then
+                    lblStatus.Text = "Se ha actualizado correctamente"
+                End If
             Catch ex As Exception
-                lblError.Text = "Excepción producida: " & ex.Message.ToString()
+                lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
             End Try
         Else
             Try
                 If carrera.Insert() Then
-                    lblError.Text = "Carrera agregada correctamente"
+                    lblStatus.Text = "Carrera agregada correctamente"
                 Else
-                    lblError.Text = "No se pudo insertar carrera"
+                    lblStatus.Text = "No se pudo insertar carrera"
                 End If
             Catch ex As Exception
-                lblError.Text = "Excepción producida: " & ex.Message.ToString()
+                lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
             End Try
         End If
     End Sub
