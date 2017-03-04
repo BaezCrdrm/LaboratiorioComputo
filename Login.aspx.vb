@@ -31,5 +31,7 @@ Partial Class Login
         End If
     End Sub
 
-
+    Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
+        Response.Redirect("Default.aspx")
+    End Sub
 End Class

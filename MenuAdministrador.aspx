@@ -26,6 +26,13 @@
         <form id="form1" class="log" runat="server">
             <asp:Button ID="btnCarreras" CssClass="buttons" runat="server" Text="Carreras" OnClick="btnCarreras_Click" /><br />
             <asp:Button ID="btnMaquinas" CssClass="buttons" runat="server" Text="Máquinas" OnClick="btnMaquinas_Click"/>
+
+            <div ID="divGoToMenu">
+                <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+                    CssClass="goBack" runat="server" AlternateText="Regresar" 
+                    ImageAlign="Top" title="Salir" OnClientClick="form1.target ='_self';"/>
+                <asp:Label Text="Salir" CssClass="lblGoToMenu" runat="server" />                
+            </div>
         </form>
     </section>
 </body>

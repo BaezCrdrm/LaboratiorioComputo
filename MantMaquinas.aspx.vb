@@ -3,6 +3,7 @@ Partial Class MantMaquinas
     Inherits System.Web.UI.Page
     Shared mostrar As Boolean
     Shared activa As Boolean
+    Private action As String = "new"
 
 
     Private Sub MantMaquinas_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -11,12 +12,20 @@ Partial Class MantMaquinas
             Response.Redirect("Login.aspx?status=loginerror")
         Else
             'Inicio de sesión exitoso
-            Try
-                Dim id As Integer = Convert.ToInt32(Request.QueryString("id"))
-                cargaDatos(id)
-            Catch ex As Exception
+            If Request.QueryString("action") = "modify" Then
+                action = "modify"
+                If Not Page.IsPostBack Then
+                    Try
+                        Dim id As Integer = Convert.ToInt32(Request.QueryString("id"))
+                        cargaDatos(id)
+                    Catch ex As Exception
 
-            End Try
+                    End Try
+                End If
+                btnGuardar.Text = "Actualizar"
+            Else
+
+            End If
         End If
     End Sub
 
@@ -39,7 +48,7 @@ Partial Class MantMaquinas
         ElseIf maquina.Bandera = 2 Then
             activa = False
             chkActiva.Checked = activa
-            chkActiva.Text = ""
+            chkActiva.Text = "Activa"
             chkActiva.Enabled = True
         End If
     End Sub
@@ -55,7 +64,7 @@ Partial Class MantMaquinas
         If Not chkActiva.Enabled Then
             maquina.Bandera = 1
         Else
-            If activa Then
+            If activa = False Then
                 maquina.Bandera = 0
             Else
                 maquina.Bandera = 2
@@ -64,6 +73,7 @@ Partial Class MantMaquinas
         maquina.Mostrar = mostrar
         If (maquina.Update(maquina.ID)) Then
             lblStatus.Text = "Se actualizó correctamente"
+            btnGoBack.Text = "Cerrar"
         Else
             lblStatus.Text = "No se pudo actualizar"
         End If

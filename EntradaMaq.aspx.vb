@@ -1,19 +1,16 @@
-﻿Imports System.Data
+﻿
+Imports System.Data
 
-Partial Class MaquinasSistema
+Partial Class EntradaMaq
     Inherits System.Web.UI.Page
 
-    Private Sub MaquinasSistema_Load(sender As Object, e As EventArgs) Handles Me.Load
-        If Session("ACTIVE_SESSION") = False Then
-            Response.Redirect("Login.aspx?status=loginerror")
-        Else
-            CargaMaquinas()
-        End If
+    Private Sub EntradaMaq_Load(sender As Object, e As EventArgs) Handles Me.Load
+        cargaMaquinas()
     End Sub
 
-    Private Sub CargaMaquinas()
+    Private Sub cargaMaquinas()
         Dim con As New Conexion
-        Dim query As String = "SELECT ID_MAQUINA, NUMERO_MAQ, INFORMACION_MAQ, BANDERA_MAQ, MOSTRAR_MAQ FROM MAQUINAS ORDER BY NUMERO_MAQ"
+        Dim query As String = "SELECT ID_MAQUINA, NUMERO_MAQ, INFORMACION_MAQ, BANDERA_MAQ, MOSTRAR_MAQ FROM MAQUINAS WHERE MOSTRAR_MAQ = 1 ORDER BY NUMERO_MAQ"
         Dim ds As DataSet = con.GetRows(query)
         Dim dt As DataTable
 
@@ -30,10 +27,11 @@ Partial Class MaquinasSistema
                     img.CssClass = "maquina"
                     'img.OnClientClick = "MantMaquinas.aspx?id=" & Convert.ToString(dr("ID_MAQUINA"))
                     img.OnClientClick = "form1.target ='_blank';"
-                    AddHandler img.Click, AddressOf MantMaquina_Click
+                    AddHandler img.Click, AddressOf entradaMaquina_Click
 
                     lblMaq.Text = Convert.ToString(dr("NUMERO_MAQ"))
 
+                    img.Enabled = True
                     Select Case Convert.ToInt32(dr("BANDERA_MAQ"))
                         Case 0
                             img.ImageUrl = "imagenes\machineD.png"
@@ -41,6 +39,7 @@ Partial Class MaquinasSistema
                             img.ImageUrl = "imagenes\machineO.png"
                         Case 2
                             img.ImageUrl = "imagenes\machineN.png"
+                            img.Enabled = False
                     End Select
 
                     tc.Controls.Add(img)
@@ -57,16 +56,12 @@ Partial Class MaquinasSistema
         End If
     End Sub
 
-    Protected Sub MantMaquina_Click(sender As Object, e As ImageClickEventArgs)
+    Protected Sub entradaMaquina_Click(sender As Object, e As ImageClickEventArgs)
         Dim tempId As String() = Split((DirectCast(sender, ImageButton)).ID, "_")
-        Response.Redirect("MantMaquinas.aspx?action=modify&id=" & tempId(1))
+        Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1))
     End Sub
 
     Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
-        Response.Redirect("MenuAdministrador.aspx")
-    End Sub
-
-    Protected Sub btnNuevo_Click(sender As Object, e As EventArgs) Handles btnNuevo.Click
-        Response.Redirect("MantMaquinas.aspx?action=create")
+        Response.Redirect("MenuMaquina.aspx")
     End Sub
 End Class

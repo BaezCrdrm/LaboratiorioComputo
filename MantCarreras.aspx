@@ -31,9 +31,11 @@
             <asp:TextBox ID="txtAbv" runat="server"></asp:TextBox><br />
             <asp:Label ID="lblStatus" runat="server"></asp:Label><br />
             <asp:Button ID="btnGuardar" runat="server" Text="Agregar" />
-            <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+            <%--<asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
                 CssClass="goBack" runat="server" AlternateText="Regresar" 
-                OnClientClick="closeTab()" ImageAlign="Top" title="Regresar" />
+                OnClientClick="closeTab()" ImageAlign="Top" title="Regresar" />--%>
+            <asp:Button ID="btnGoBack" CssClass="goBack" runat="server" AlternateText="Regresar" 
+                OnClientClick="closeTab()" ImageAlign="Top" Text="Cancelar" />
         </form>        
     </section>
 

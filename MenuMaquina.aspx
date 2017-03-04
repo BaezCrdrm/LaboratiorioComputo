@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Login.aspx.vb" Inherits="Login" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="MenuMaquina.aspx.vb" Inherits="MenuMaquina" %>
 
 <!DOCTYPE html>
 
@@ -6,9 +6,9 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <title>Login</title>
+    <title>Acceso a laboratorio</title>
     <link href="Estilo/General.css" rel="stylesheet" />
-    <link href="Estilo/Login.css" rel="stylesheet" />
+    <link href="Estilo/" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -21,23 +21,19 @@
     </header>
 
     <section id="principal">
-        <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
-        <h2 class="titulo_pagina">Administración del sistema</h2>
+        <h1 class="titulo_inicio">Acceso a laboratorio</h1>
         <form id="form1" runat="server">
-            <div class="log">
-                <label for="txtUsuario">Usuario</label><br />
-                <asp:TextBox ID="txtUsuario" CssClass="caja" runat="server" /><br />
-                <label for="txtPass">Contraseña</label><br />
-                <asp:TextBox ID="txtPass" CssClass="caja" runat="server" TextMode="Password" /><br />
-                <asp:Button ID="btnAccept" runat="server" Text="Acceder" /><br />
-                <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
+            <div class="buttonsForm">
+                <asp:Button ID="btnEntrada" CssClass="buttons" runat="server" Text="Entrada máquina" />
+                <asp:Button ID="btnSalida" CssClass="buttons" runat="server" Text="Salida máquina" />             
+                <%--<asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Tiempo máquina" />--%>
+            </div>
 
-                <div ID="divGoToMenu">
+            <div ID="divGoToMenu">
                 <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
                     CssClass="goBack" runat="server" AlternateText="Regresar" 
                     ImageAlign="Top" title="Menú administrador" OnClientClick="form1.target ='_self';"/>
                 <%--<asp:Label Text="Menú" CssClass="lblGoToMenu" runat="server" />   --%>             
-            </div>
             </div>
         </form>
     </section>

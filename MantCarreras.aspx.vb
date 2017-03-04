@@ -34,6 +34,7 @@ Partial Class MantCarreras
             Try
                 If (carrera.Update(carrera.ID)) Then
                     lblStatus.Text = "Se ha actualizado correctamente"
+                    btnGoBack.Text = "Cerrar"
                 End If
             Catch ex As Exception
                 lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
@@ -42,6 +43,7 @@ Partial Class MantCarreras
             Try
                 If carrera.Insert() Then
                     lblStatus.Text = "Carrera agregada correctamente"
+                    btnGoBack.Text = "Cerrar"
                 Else
                     lblStatus.Text = "No se pudo insertar carrera"
                 End If

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Default.aspx.vb" Inherits="_Default" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="MenuUsuario.aspx.vb" Inherits="MenuUsuario" %>
 
 <!DOCTYPE html>
 
@@ -6,9 +6,9 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <title>LABCOMP</title>
+    <title>Menú Usuario</title>
     <link href="Estilo/General.css" rel="stylesheet" />
-    <link href="Estilo/Default.css" rel="stylesheet" />
+    <link href="Estilo/" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -21,12 +21,12 @@
     </header>
 
     <section id="principal">
-        <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
+        <h1 class="titulo_inicio">Menú usuario</h1>
         <form id="form1" runat="server">
             <div class="buttonsForm">
-                <%--<asp:Button ID="btnUsuarios" CssClass="buttons" runat="server" Text="Usuarios" />--%>
-                <asp:Button ID="btnAcceso" CssClass="buttons" runat="server" Text="Acceso a laboratorio" />
-                <asp:Button ID="btnAdmSistema" CssClass="buttons" runat="server" Text="Administración sistema" />                
+                <asp:Button ID="btnRegistrar" CssClass="buttons" runat="server" Text="Registrar" />
+                <asp:Button ID="btnModificar" CssClass="buttons" runat="server" Text="Modificar" />             
+                <asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Listar" />
             </div>
         </form>
     </section>
