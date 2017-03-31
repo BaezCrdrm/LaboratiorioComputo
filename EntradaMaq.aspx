@@ -9,6 +9,53 @@
     <title>Entrada de Máquinas</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/MaquinasSistema.css" rel="stylesheet" />
+    <link href="Estilo/Tables.css" rel="stylesheet" />
+
+    <style type="text/css">
+        /***En esta sección se encuentra el estilo aplicado ÚNICAMENTE a esta página.***/
+        /***El estilo compartido se encuentra en otros archivos CSS***/
+
+        /*Barra de estado*/
+        #divEstados, #divCredencial  {
+            width: 380px;
+            margin-left:auto;
+            margin-right:auto;
+        }
+
+        #divCredencial {
+            margin-top: 20px;
+        }
+
+            #divCredencial > label {
+                width: auto;
+                float:left;
+                font-weight: bold;   
+            }
+
+            #txtNumUsuario {
+                width: 190px;
+                float: right;
+            }
+
+        #listaEstados li{
+            display:inline-block;
+        }
+
+            .divMaquina {
+                width:90px;
+            }
+
+                .divMaquina img {
+                    width:auto;
+                    height:35px;
+                    margin-left:25px;
+                }
+
+        .divMaquina h4 {
+            text-align:center;
+            margin-bottom:10px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -24,35 +71,41 @@
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
         <h2 class="titulo_pagina">Entrada de Máquinas</h2>
         
-        <div>
-            <h3>Estado</h3>
-            <ul>
+        <form id="form1" runat="server">
+            <div id="divCredencial">
+                <label>Número de credencial</label>
+                <asp:TextBox ID="txtNumUsuario" runat="server" /><br />
+                <asp:Label ID="lblNomlabel" runat="server" />
+            </div><br />
+
+            <div id="divEstados">            
+            <ul id="listaEstados">
                 <li>
-                    <div>
-                        <img src="imagenes/machineD.PNG" alt="Estado: Libre" />
-                        <label>Libre</label>
+                    <div class="divMaquina">
+                        <h3>Estado:</h3>
+                    </div> 
+                </li>
+                <li>
+                    <div class="divMaquina">
+                        <img src="imagenes/machineD.PNG" alt="Estado: Libre" /><br />
+                        <h4>Libre</h4>
                     </div> 
                 </li>
                 <li>       
-                    <div>
-                        <img src="imagenes/machineO.PNG" alt="Estado: Ocupada" />
-                        <label>Ocupada</label>
+                    <div class="divMaquina">
+                        <img src="imagenes/machineO.PNG" alt="Estado: Ocupada" /><br />
+                        <h4>Ocupada</h4>
                     </div>
                 </li>
                 <li>
-                    <div>
-                        <img src="imagenes/machineN.PNG" alt="Estado: Inhabilitada" />
-                        <label>Inhabilitada</label>
+                    <div class="divMaquina">
+                        <img src="imagenes/machineN.PNG" alt="Estado: Inhabilitada" /><br />
+                        <h4>Inhabilitada</h4>
                     </div>
                 </li>
             </ul>
         </div>
-        <form id="form1" runat="server">
-            <div>
-                <label>Número de credencial</label><br />
-                <asp:TextBox ID="txtNumUsuario" runat="server" />
-            </div><br />
-            <asp:Label ID="lblNomlabel" runat="server" />
+            
             <asp:Table ID="Table1" runat="server"></asp:Table>
 
             <br />

@@ -9,6 +9,12 @@
     <title>Mantenimiento Máquinas</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Mantenimiento.css" rel="stylesheet" />
+
+    <style type="text/css">
+        #txtInfo {
+            height:75px !important;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,7 +31,7 @@
             <label class="lblMant">Número</label><br />
             <asp:TextBox ID="txtNumero" runat="server" /><br />        
             <label class="lblMant">Información</label><br />
-            <asp:TextBox ID="txtInfo" runat="server" /><br />
+            <asp:TextBox ID="txtInfo" runat="server" TextMode="MultiLine" /><br />
             <asp:CheckBox ID="chkActiva" CssClass="lblMant" Text="Activa" AutoPostBack="true" runat="server" />
             <asp:CheckBox ID="chkMostrar" CssClass="lblMant" Text="Mostrar" AutoPostBack="true" runat="server" />
 
@@ -34,8 +40,8 @@
             <%--<asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
                 CssClass="goBack" runat="server" AlternateText="Regresar" 
                 OnClientClick="closeTab()" ImageAlign="Top" title="Regresar" />--%>
-            <asp:Button ID="btnGoBack" CssClass="goBack" runat="server" AlternateText="Regresar" 
-                OnClientClick="closeTab()" ImageAlign="Top" text="Cancelar" />
+            <asp:Button ID="btnGoBack" CssClass="goBack" runat="server" 
+                AlternateText="Regresar" ImageAlign="Top" text="Cancelar" />
             <asp:Button ID="btnGuardar" Text="Guardar" runat="server" />
 
         </form>

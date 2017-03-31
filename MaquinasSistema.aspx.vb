@@ -29,10 +29,11 @@ Partial Class MaquinasSistema
                     img.ID = "img_" & Convert.ToString(dr("ID_MAQUINA"))
                     img.CssClass = "maquina"
                     'img.OnClientClick = "MantMaquinas.aspx?id=" & Convert.ToString(dr("ID_MAQUINA"))
-                    img.OnClientClick = "form1.target ='_blank';"
+                    img.OnClientClick = "form1.target ='_self';"
                     AddHandler img.Click, AddressOf MantMaquina_Click
 
                     lblMaq.Text = Convert.ToString(dr("NUMERO_MAQ"))
+                    lblMaq.CssClass = "lblMaqNum"
 
                     Select Case Convert.ToInt32(dr("BANDERA_MAQ"))
                         Case 0
@@ -44,6 +45,7 @@ Partial Class MaquinasSistema
                     End Select
 
                     tc.Controls.Add(img)
+                    tc.Controls.Add(New LiteralControl("<br />"))
                     tc.Controls.Add(lblMaq)
                     row.Cells.Add(tc)
 

@@ -65,13 +65,3 @@ header {
             width:auto !important;
             height:30px;
         }
-
-/*Tablas*/
-.table_header {
-    font-weight:bold;
-    text-align:center;
-}
-
-td {
-    border-bottom:1px solid;
-}

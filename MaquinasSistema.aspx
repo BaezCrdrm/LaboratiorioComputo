@@ -9,6 +9,7 @@
     <title>Máquinas sistema</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/MaquinasSistema.css" rel="stylesheet" />
+    <link href="Estilo/Tables.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -24,8 +25,8 @@
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
         <h2 class="titulo_pagina">Máquinas sistema</h2>
         <form id="form1" runat="server">
-            <asp:Button ID="btnNuevo" Text="Nueva carrera" runat="server" 
-                OnClick="btnNuevo_Click" OnClientClick="form1.target ='_blank';"/>
+            <asp:Button ID="btnNuevo" Text="Nueva maquina" runat="server" 
+                OnClick="btnNuevo_Click" OnClientClick="form1.target ='_self';"/>
             <asp:Table ID="Table1" runat="server"></asp:Table>
 
             <br />

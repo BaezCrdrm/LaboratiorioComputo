@@ -6,9 +6,7 @@ Public Class Usuario
     Private _nombre As String
     Private _fechaRegistro As DateTime
     Private _idUsuarioClase As Integer 'Usuario tipo
-
-    'Preguntar
-    'Private m_IdDependencia As Integer = 0
+    Private _credencial As String
 
 #Region "Propiedades"
     Public Property IDUsuario() As Integer
@@ -41,6 +39,14 @@ Public Class Usuario
         End Get
         Set(ByVal value As Integer)
             _idUsuarioClase = value
+        End Set
+    End Property
+    Public Property CredencialUsuario() As String
+        Get
+            Return _credencial
+        End Get
+        Set(ByVal value As String)
+            _credencial = value
         End Set
     End Property
 #End Region

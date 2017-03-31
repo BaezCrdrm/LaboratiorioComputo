@@ -1,5 +1,4 @@
-﻿
-Imports System.Data
+﻿Imports System.Data
 
 Partial Class EntradaMaq
     Inherits System.Web.UI.Page
@@ -25,27 +24,30 @@ Partial Class EntradaMaq
                     Dim lblMaq As New System.Web.UI.WebControls.Label
                     img.ID = "img_" & Convert.ToString(dr("ID_MAQUINA"))
                     img.CssClass = "maquina"
-                    'img.OnClientClick = "MantMaquinas.aspx?id=" & Convert.ToString(dr("ID_MAQUINA"))
-                    img.OnClientClick = "form1.target ='_blank';"
+                    img.OnClientClick = "form1.target ='_self';"
                     AddHandler img.Click, AddressOf entradaMaquina_Click
 
                     lblMaq.Text = Convert.ToString(dr("NUMERO_MAQ"))
+                    lblMaq.CssClass = "lblMaqNum"
 
-                    img.Enabled = True
                     Select Case Convert.ToInt32(dr("BANDERA_MAQ"))
                         Case 0
                             img.ImageUrl = "imagenes\machineD.png"
+                            img.Enabled = True
                         Case 1
                             img.ImageUrl = "imagenes\machineO.png"
+                            img.Enabled = False
                         Case 2
                             img.ImageUrl = "imagenes\machineN.png"
                             img.Enabled = False
                     End Select
 
                     tc.Controls.Add(img)
+                    tc.Controls.Add(New LiteralControl("<br />"))
                     tc.Controls.Add(lblMaq)
                     row.Cells.Add(tc)
 
+                    'Limitado a 69 equipos
                     If r = 9 Or r = 19 Or r = 29 Or r = 39 Or r = 49 Or r = 59 Then
                         Table1.Rows.Add(row)
                         row = New TableRow
@@ -57,8 +59,16 @@ Partial Class EntradaMaq
     End Sub
 
     Protected Sub entradaMaquina_Click(sender As Object, e As ImageClickEventArgs)
-        Dim tempId As String() = Split((DirectCast(sender, ImageButton)).ID, "_")
-        Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1))
+        Dim btnTemp = DirectCast(sender, ImageButton)
+        If btnTemp.Enabled Then
+            'If Not txtNumUsuario.Text.Trim = "" And txtNumUsuario.Text.Count > 8 Then
+            If Not txtNumUsuario.Text.Trim = "" Then
+                Dim tempId As String() = Split(btnTemp.ID, "_")
+                Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1) & "&credencial=" & txtNumUsuario.Text.Trim)
+            Else
+                lblNomlabel.Text = "Escriba un número de credencial válido"
+            End If
+        End If
     End Sub
 
     Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click

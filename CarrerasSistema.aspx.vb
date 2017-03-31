@@ -40,7 +40,7 @@ Partial Class CarrerasSistema
                                 bt.ID = "btn_" & Convert.ToString(dr("ID_CARRERA"))
                                 bt.Text = "Modificar"
                                 bt.CssClass = "btn_tabla_ver"
-                                bt.OnClientClick = "form1.target ='_blank';"
+                                bt.OnClientClick = "form1.target ='_self';"
                                 AddHandler bt.Click, AddressOf ButtonVer_Click
                                 tc.Controls.Add(bt)
                         End Select

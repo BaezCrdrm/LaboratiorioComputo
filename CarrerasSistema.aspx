@@ -25,7 +25,7 @@
 
         <form id="form1" runat="server">
             <asp:Button ID="btnNuevo" Text="Nueva carrera" runat="server" 
-                OnClick="btnNuevo_Click" OnClientClick="form1.target ='_blank';"/>
+                OnClick="btnNuevo_Click" OnClientClick="form1.target ='_self';"/>
             <asp:Table ID="Table1" runat="server">
                 <asp:TableRow runat="server">
                     <asp:TableCell runat="server" CssClass="table_header">Nombre</asp:TableCell>

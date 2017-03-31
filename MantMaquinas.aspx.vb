@@ -23,8 +23,6 @@ Partial Class MantMaquinas
                     End Try
                 End If
                 btnGuardar.Text = "Actualizar"
-            Else
-
             End If
         End If
     End Sub
@@ -54,11 +52,7 @@ Partial Class MantMaquinas
     End Sub
 
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        'Hacer validación de datos
-
-        'Terminar validación de datos
         Dim maquina As New Maquina
-        maquina.ID = Convert.ToInt32(Request.QueryString("id"))
         maquina.Numero = txtNumero.Text.Trim
         maquina.Info = txtInfo.Text.Trim
         If Not chkActiva.Enabled Then
@@ -71,11 +65,25 @@ Partial Class MantMaquinas
             End If
         End If
         maquina.Mostrar = mostrar
-        If (maquina.Update(maquina.ID)) Then
-            lblStatus.Text = "Se actualizó correctamente"
-            btnGoBack.Text = "Cerrar"
+
+        If Request.QueryString("action") = "modify" Then
+            Maquina.ID = Convert.ToInt32(Request.QueryString("id"))
+
+            If (Maquina.Update(Maquina.ID)) Then
+                lblStatus.Text = "Se actualizó correctamente"
+                btnGoBack.Text = "Cerrar"
+                Response.Redirect("MaquinasSistema.aspx")
+            Else
+                lblStatus.Text = "No se pudo actualizar"
+            End If
         Else
-            lblStatus.Text = "No se pudo actualizar"
+            If (maquina.Insert()) Then
+                lblStatus.Text = "Se agregó correctamente"
+                btnGoBack.Text = "Cerrar"
+                Response.Redirect("MaquinasSistema.aspx")
+            Else
+                lblStatus.Text = "No se pudo agregar"
+            End If
         End If
     End Sub
     Protected Sub chkActiva_CheckedChanged(sender As Object, e As EventArgs) Handles chkActiva.CheckedChanged
@@ -84,5 +92,8 @@ Partial Class MantMaquinas
     Protected Sub chkMostrar_CheckedChanged(sender As Object, e As EventArgs) Handles chkMostrar.CheckedChanged
         mostrar = Not mostrar
         chkMostrar.Checked = mostrar
+    End Sub
+    Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click
+        Response.Redirect("MaquinasSistema.aspx")
     End Sub
 End Class
