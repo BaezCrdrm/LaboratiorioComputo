@@ -17,6 +17,10 @@ function alertaErrorUsuario()
     if(opc==true)
     {
         //Cambiar localización de redireccionamiento
-        location.href = "MenuMaquina.aspx"
+        location.href = "MenuMaquina.aspx";
     }
+    else {
+        location.href = "EntradaMaq.aspx";
+    }
+
 }

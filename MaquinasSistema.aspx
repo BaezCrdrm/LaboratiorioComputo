@@ -10,6 +10,16 @@
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/MaquinasSistema.css" rel="stylesheet" />
     <link href="Estilo/Tables.css" rel="stylesheet" />
+
+    <style type="text/css">
+        #divButton {
+            width:370px;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top:15px;
+            margin-bottom:20px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -25,8 +35,10 @@
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
         <h2 class="titulo_pagina">Máquinas sistema</h2>
         <form id="form1" runat="server">
-            <asp:Button ID="btnNuevo" Text="Nueva maquina" runat="server" 
-                OnClick="btnNuevo_Click" OnClientClick="form1.target ='_self';"/>
+            <div id="divButton">
+                <asp:Button ID="btnNuevo" Text="Nueva maquina" runat="server" 
+                    OnClick="btnNuevo_Click" OnClientClick="form1.target ='_self';"/>
+            </div>
             <asp:Table ID="Table1" runat="server"></asp:Table>
 
             <br />

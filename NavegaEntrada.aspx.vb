@@ -7,6 +7,7 @@ Partial Class NavegaEntrada
     Private dr As DataRow
     Private dt As DataTable
     Private usuario As Usuario
+    Dim fecha As Date
 
     Private Sub NavegaEntrada_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
@@ -19,7 +20,7 @@ Partial Class NavegaEntrada
                     'Cargar datos del usuario y de máquina
                     usuario = New Usuario
                     usuario = cargaDatosUsuario(cuenta)
-                    Dim fecha As Date = Date.Now
+                    fecha = Date.Now
                     lblCredencial.Text = cuenta
                     lblNombre.Text = usuario.NombreUsuario
                     lblFecha.Text = fecha.Date.ToLongDateString()
@@ -98,8 +99,8 @@ Partial Class NavegaEntrada
             Dim query As String = "UPDATE MAQUINAS SET BANDERA_MAQ = 1 WHERE ID_MAQUINA = '" & lblMaquina.Text & "'"
             con.ExecuteQuery(query)
 
-            query = String.Format("INSERT INTO UTILIZA (ID_USUARIO, ID_MAQUINA) VALUES ({0}, {1})",
-                              usuario.IDUsuario, lblMaquina.Text)
+            query = String.Format("INSERT INTO UTILIZA (ID_USUARIO, ID_MAQUINA, HORA_ENTRADA) VALUES ({0}, {1}, '{2}')",
+                              usuario.IDUsuario, lblMaquina.Text, fecha.ToString("dd/MM/yyyy HHH:mm:ss"))
             con.ExecuteQuery(query)
             Response.Redirect("EntradaMaq.aspx")
         Catch ex As Exception
