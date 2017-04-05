@@ -8,7 +8,6 @@
     <meta charset="utf-8" />
     <title>Menú Usuario</title>
     <link href="Estilo/General.css" rel="stylesheet" />
-    <link href="Estilo/" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -26,7 +25,7 @@
             <div class="buttonsForm">
                 <asp:Button ID="btnRegistrar" CssClass="buttons" runat="server" Text="Registrar" />
                 <asp:Button ID="btnModificar" CssClass="buttons" runat="server" Text="Modificar" />             
-                <asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Listar" />
+                <%--<asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Listar" />--%>
             </div>
         </form>
     </section>

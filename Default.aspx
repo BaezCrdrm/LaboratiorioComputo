@@ -24,7 +24,7 @@
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
         <form id="form1" runat="server">
             <div class="buttonsForm">
-                <%--<asp:Button ID="btnUsuarios" CssClass="buttons" runat="server" Text="Usuarios" />--%>
+                <asp:Button ID="btnUsuarios" CssClass="buttons" runat="server" Text="Usuarios" />
                 <asp:Button ID="btnAcceso" CssClass="buttons" runat="server" Text="Acceso a laboratorio" />
                 <asp:Button ID="btnAdmSistema" CssClass="buttons" runat="server" Text="Administración sistema" />                
             </div>

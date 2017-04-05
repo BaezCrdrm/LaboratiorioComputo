@@ -73,4 +73,7 @@ Partial Class NavegaSalida
 
         End Try
     End Sub
+    Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click
+        Response.Redirect("SalidaMaquina.aspx")
+    End Sub
 End Class
