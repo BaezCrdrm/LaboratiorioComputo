@@ -8,6 +8,7 @@
     <meta charset="utf-8" />
     <title>Menú Usuario</title>
     <link href="Estilo/General.css" rel="stylesheet" />
+    <script src="Scripts.js"></script>
 </head>
 <body>
     <header>
@@ -26,7 +27,15 @@
                 <asp:Button ID="btnRegistrar" CssClass="buttons" runat="server" Text="Registrar" />
                 <asp:Button ID="btnModificar" CssClass="buttons" runat="server" Text="Modificar" />             
                 <%--<asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Listar" />--%>
+
+                <div ID="divGoToMenu">
+                <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+                    CssClass="goBack" runat="server" AlternateText="Regresar" 
+                    ImageAlign="Top" title="Salir" OnClientClick="form1.target ='_self';"/>
+                <%--<asp:Label Text="Salir" CssClass="lblGoToMenu" runat="server" />--%>                
             </div>
+            </div>
+            
         </form>
     </section>
 </body>

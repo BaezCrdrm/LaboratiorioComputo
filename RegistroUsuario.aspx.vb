@@ -10,7 +10,15 @@ Partial Class RegistroUsuario
 
     Private Sub RegistroUsuario_Load(sender As Object, e As EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
-            cargaCarreras()
+            Dim con As New Conexion
+            If con.TestConnection = False Then
+                ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
+                                                    String.Format("connectionFailed('{0}', '{1}');",
+                                                                  "MenuUsuario.aspx",
+                                                                  "No se pudo conectar con la base de datos"), True)
+            Else
+                cargaCarreras()
+            End If
         End If
         lblError.Text = ""
         Try
@@ -58,27 +66,37 @@ Partial Class RegistroUsuario
         Dim carrera As New Carrera
         Dim usr As New Usuario
         Dim strCredencial As String = txtCredencial.Text.ToString().Trim().ToUpper()
+        Dim strNombre As String = txtNombre.Text.ToString().Trim().ToUpper()
 
-        'Validar usuario por numero de credencial
-        If validaUsuario(strCredencial) Then
-            usr.NombreUsuario = txtNombre.Text.ToString().Trim().ToUpper()
-            usr.CredencialUsuario = strCredencial
-            usr.FechaRegistro = DateTime.Now
-            usr.Carrera.ID = Convert.ToInt32(ddlCarreras.SelectedValue.ToString())
+        If (Not strCredencial = "") And (Not strNombre = "") And IsNumeric(strCredencial) Then
+            'Validar usuario por numero de credencial
+            If validaUsuario(strCredencial) Then
+                usr.NombreUsuario =
+                usr.CredencialUsuario = strCredencial
+                usr.FechaRegistro = DateTime.Now
+                usr.Carrera.ID = Convert.ToInt32(ddlCarreras.SelectedValue.ToString())
 
-            If (usr.Insert()) Then
-                Dim msg As String = "Se agregó al usuario exitosamente"
-                ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
-                                                    String.Format("usuarioAgregado('{0}', '{1}');",
-                                                                  regresaAEntradaMaq, msg), True)
-                'If regresaAEntradaMaq = True Then
-                '    Response.Redirect("EntradaMaq.aspx")
-                'Else
-                '    Response.Redirect("MenuUsuario.aspx")
-                'End If
+                If (usr.Insert()) Then
+                    Dim msg As String = "Se agregó al usuario exitosamente"
+                    ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
+                                                        String.Format("usuarioAgregado('{0}', '{1}');",
+                                                                      "true", msg), True)
+                    'If regresaAEntradaMaq = True Then
+                    '    Response.Redirect("EntradaMaq.aspx")
+                    'Else
+                    '    Response.Redirect("MenuUsuario.aspx")
+                    'End If
+                End If
+            Else
+                lblError.Text = "El usuario ya se registrado"
             End If
+
         Else
-            lblError.Text = "El usuario ya se registrado"
+            If strCredencial = "" Or Not (IsNumeric(strCredencial)) Then
+                lblError.Text = "Numero de credencial no valido"
+            ElseIf strNombre = "" Then
+                lblError.Text = "Ingresa un nombre de usuario"
+            End If
         End If
     End Sub
     Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click

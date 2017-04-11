@@ -40,6 +40,14 @@ function usuarioAgregado(regreso, msg)
     }
     else
     {
-        location.href = "MenuUsuario.aspx";
+        //location.href = "MenuUsuario.aspx";
+    }
+}
+
+function connectionFailed(page, msg)
+{
+    alert(msg);
+    if (page != null) {
+        location.href = page;
     }
 }
