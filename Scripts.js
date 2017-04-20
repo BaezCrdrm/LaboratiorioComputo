@@ -9,6 +9,11 @@ function goBack(p)
     pages = -1;
 }
 
+function navigateToPage(page) {
+    alert("Correcto");
+    location.href = page;
+}
+
 function alertaErrorUsuario()
 {
     //alert("El usuario no se encuentra registrado. Se te rediccionará al registro de usuarios.");

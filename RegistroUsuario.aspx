@@ -63,16 +63,18 @@
     </header>
 
     <section id="principal">
-        <h1 class="titulo_inicio">Registrar</h1>
         <form id="form1" runat="server">
+            <h1 class="titulo_inicio">
+                <asp:Label ID="lblTitulo" Text="Registrar" runat="server" />
+            </h1>
             <div id="divDatos">
-                <div class="divDatosUsr">
-                    <label class="lblInfo">Nombre de usuario</label>
-                    <asp:TextBox ID="txtNombre" CssClass="inputRegistro" runat="server" />
-                </div>
                 <div class="divDatosUsr">
                     <label class="lblInfo">Número de credencial</label>
                     <asp:TextBox ID="txtCredencial" CssClass="inputRegistro" runat="server" />
+                </div>
+                <div class="divDatosUsr">
+                    <label class="lblInfo">Nombre de usuario</label>
+                    <asp:TextBox ID="txtNombre" CssClass="inputRegistro" runat="server" />
                 </div>
                 <div class="divDatosUsr">
                     <label class="lblInfo">Carrera</label>

@@ -17,7 +17,7 @@ Partial Class MenuUsuario
 
     Protected Sub btnModificar_Click(sender As Object, e As EventArgs) Handles btnModificar.Click
         If testConnection() Then
-
+            Response.Redirect("ModificaUsuario.aspx")
         End If
     End Sub
 
