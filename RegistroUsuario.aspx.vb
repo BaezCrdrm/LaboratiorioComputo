@@ -112,10 +112,8 @@ Partial Class RegistroUsuario
     Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Dim carrera As New Carrera
         Dim usr As New Usuario
-        'Dim strCredencial As String = txtCredencial.Text.ToString().Trim().ToUpper()
-        'Dim strNombre As String = txtNombre.Text.ToString().Trim().ToUpper()
-        Dim strCredencial As String = txtCredencial.Text
-        Dim strNombre As String = txtNombre.Text
+        Dim strCredencial As String = txtCredencial.Text.ToString().Trim().ToUpper()
+        Dim strNombre As String = txtNombre.Text.ToString().Trim().ToUpper()
 
         If (Not strCredencial = "") And (Not strNombre = "") And IsNumeric(strCredencial) Then
             Dim insertUsuarioValido As Boolean
@@ -132,8 +130,7 @@ Partial Class RegistroUsuario
                 usr.NombreUsuario = strNombre
                 usr.CredencialUsuario = strCredencial
                 usr.FechaRegistro = DateTime.Now
-                'usr.Carrera.ID = Convert.ToInt32(ddlCarreras.SelectedValue.ToString())
-                usr.Carrera.ID = uCarrera
+                usr.Carrera.ID = Convert.ToInt32(ddlCarreras.SelectedValue.ToString())
 
                 If (reg = True) Then
                     If (usr.Insert()) Then
@@ -182,8 +179,5 @@ Partial Class RegistroUsuario
     End Sub
     Protected Sub txtNombre_TextChanged(sender As Object, e As EventArgs) Handles txtNombre.TextChanged
         uNombre = txtNombre.Text
-    End Sub
-    Protected Sub ddlCarreras_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlCarreras.SelectedIndexChanged
-        uCarrera = Convert.ToInt32(ddlCarreras.SelectedValue)
     End Sub
 End Class

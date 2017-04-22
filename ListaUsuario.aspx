@@ -1,19 +1,13 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ModificaUsuario.aspx.vb" Inherits="ModificaUsuario" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ListaUsuario.aspx.vb" Inherits="ListaUsuario" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Modificar usuario</title>
+    <title>Listar usuario</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Tables.css" rel="stylesheet" />
-    <script type="text/javascript">
-        function navigateToPage(page) {
-            alert("Correcto");
-            window.location.replace = page;
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -27,12 +21,12 @@
 
     <section id="principal">
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
-        <h2 class="titulo_pagina">Modificar usuario</h2>
+        <h2 class="titulo_pagina">Listar usuario</h2>
         
         <form id="form1" runat="server">
             <div>
-                <label for="txtCredencial">Número de credencial</label>
-                <asp:TextBox ID="txtCredencial" runat="server" />
+                <label for="txtNombre">Nombre</label>
+                <asp:TextBox ID="txtNombre" runat="server" />
                 <asp:Button ID="btnBuscar" Text="Buscar" runat="server" /><br />
                 <asp:Label ID="lblError" Text="" runat="server" />
             </div>
@@ -45,7 +39,6 @@
                     <asp:TableCell runat="server" CssClass="table_header">Fecha</asp:TableCell>
                     <asp:TableCell runat="server" CssClass="table_header">Carrera</asp:TableCell>
                     <asp:TableCell runat="server" CssClass="table_header">Abreviatura</asp:TableCell>
-                    <asp:TableCell runat="server" CssClass="table_header"></asp:TableCell>
                 </asp:TableRow>
             </asp:Table> 
 

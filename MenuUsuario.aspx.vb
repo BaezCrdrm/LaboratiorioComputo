@@ -35,4 +35,7 @@ Partial Class MenuUsuario
     Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
         Response.Redirect("Default.aspx")
     End Sub
+    Protected Sub btnListar_Click(sender As Object, e As EventArgs) Handles btnListar.Click
+        Response.Redirect("ListaUsuario.aspx")
+    End Sub
 End Class
