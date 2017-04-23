@@ -1,0 +1,34 @@
+.divData, #tableUsuarios {
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.divData {
+    margin-top: 20px;
+    max-width: 375px;
+    height: auto;
+}
+
+    .divData > label {
+        float:left;
+        margin-right: 10px;
+    }
+
+    .txtData {
+        width: 150px;
+    }
+
+#tableUsuarios {
+    margin-top: 35px;
+}
+
+    #tableUsuarios td {
+        padding-left: 10px;
+        padding-right: 10px;
+        text-align: center;
+    }
+
+#divGoToMenu {
+    width: 900px;
+    margin-top: 20px;
+}

@@ -8,6 +8,7 @@
     <title>Modificar usuario</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Tables.css" rel="stylesheet" />
+    <link href="Estilo/ListarUsuarios.css" rel="stylesheet" />
     <script type="text/javascript">
         function navigateToPage(page) {
             alert("Correcto");
@@ -30,9 +31,9 @@
         <h2 class="titulo_pagina">Modificar usuario</h2>
         
         <form id="form1" runat="server">
-            <div>
+            <div class="divData">
                 <label for="txtCredencial">Número de credencial</label>
-                <asp:TextBox ID="txtCredencial" runat="server" />
+                <asp:TextBox ID="txtCredencial" CssClass="txtData" runat="server" />
                 <asp:Button ID="btnBuscar" Text="Buscar" runat="server" /><br />
                 <asp:Label ID="lblError" Text="" runat="server" />
             </div>

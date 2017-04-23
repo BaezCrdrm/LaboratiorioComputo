@@ -150,6 +150,7 @@ Partial Class RegistroUsuario
                         ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
                                                         String.Format("alertMessages('{0}');",
                                                                       "El usuario fue modificado"), True)
+                        btnGoBack.Text = "Regresar"
                     End If
                 End If
             Else

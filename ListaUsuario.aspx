@@ -8,6 +8,7 @@
     <title>Listar usuario</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Tables.css" rel="stylesheet" />
+    <link href="Estilo/ListarUsuarios.css" rel="stylesheet" />
 </head>
 <body>
     <header>
@@ -24,9 +25,9 @@
         <h2 class="titulo_pagina">Listar usuario</h2>
         
         <form id="form1" runat="server">
-            <div>
-                <label for="txtNombre">Nombre</label>
-                <asp:TextBox ID="txtNombre" runat="server" />
+            <div class="divData">
+                <label for="txtNombre">Nombre de usuario</label>
+                <asp:TextBox ID="txtNombre" CssClass="txtData" runat="server" />
                 <asp:Button ID="btnBuscar" Text="Buscar" runat="server" /><br />
                 <asp:Label ID="lblError" Text="" runat="server" />
             </div>

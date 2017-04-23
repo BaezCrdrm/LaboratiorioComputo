@@ -65,3 +65,7 @@ header {
             width:auto !important;
             height:30px;
         }
+
+a, a:visited {
+    color: blue;
+}
