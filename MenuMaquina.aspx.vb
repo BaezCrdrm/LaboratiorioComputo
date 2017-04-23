@@ -11,4 +11,7 @@ Partial Class MenuMaquina
     Protected Sub btnSalida_Click(sender As Object, e As EventArgs) Handles btnSalida.Click
         Response.Redirect("SalidaMaquina.aspx")
     End Sub
+    Protected Sub btnListar_Click(sender As Object, e As EventArgs) Handles btnListar.Click
+        Response.Redirect("TiempoMaq.aspx")
+    End Sub
 End Class
