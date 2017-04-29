@@ -52,4 +52,7 @@ Partial Class MantCarreras
             End Try
         End If
     End Sub
+    Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click
+        Response.Redirect("CarrerasSistema.aspx")
+    End Sub
 End Class

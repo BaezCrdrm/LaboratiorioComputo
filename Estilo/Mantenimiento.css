@@ -15,7 +15,7 @@
         float:right;
     }
 
-    #form1 > input {
+    #form1 > input, #txtInfo {
         width:250px;
         margin-top:2px;
         margin-bottom:10px;

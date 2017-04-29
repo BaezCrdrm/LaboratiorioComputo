@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="NavegaEntrada.aspx.vb" Inherits="NavegaEntrada" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="NavegaSalida.aspx.vb" Inherits="NavegaSalida" %>
 
 <!DOCTYPE html>
 
@@ -6,7 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <title>Entrada Máquina</title>
+    <title>Salida Máquina</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <style>
         #tbEntrada, #divButtons {
@@ -59,7 +59,7 @@
     </header>
 
     <section id="principal">
-        <h1 class="titulo_inicio">Entrada máquina</h1>
+        <h1 class="titulo_inicio">Salida máquina</h1>
         <form id="form1" runat="server">
             <table id="tbEntrada">
                 <tr>

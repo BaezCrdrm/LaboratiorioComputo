@@ -13,4 +13,7 @@ Partial Class _Default
     Protected Sub btnAdmSistema_Click(sender As Object, e As EventArgs) Handles btnAdmSistema.Click
         Response.Redirect("Login.aspx")
     End Sub
+    Protected Sub btnUsuarios_Click(sender As Object, e As EventArgs) Handles btnUsuarios.Click
+        Response.Redirect("MenuUsuario.aspx")
+    End Sub
 End Class

@@ -5,10 +5,9 @@ Public Class Usuario
     Private _id As Integer
     Private _nombre As String
     Private _fechaRegistro As DateTime
-    Private _idUsuarioClase As Integer 'Usuario tipo
-
-    'Preguntar
-    'Private m_IdDependencia As Integer = 0
+    'Private _idUsuarioClase As Integer 'Usuario tipo
+    Private _credencial As String
+    Private _carrera As New Carrera
 
 #Region "Propiedades"
     Public Property IDUsuario() As Integer
@@ -35,12 +34,28 @@ Public Class Usuario
             _fechaRegistro = value
         End Set
     End Property
-    Public Property IDUsuarioClase() As Integer
+    'Public Property IDUsuarioClase() As Integer
+    '    Get
+    '        Return _idUsuarioClase
+    '    End Get
+    '    Set(ByVal value As Integer)
+    '        _idUsuarioClase = value
+    '    End Set
+    'End Property
+    Public Property CredencialUsuario() As String
         Get
-            Return _idUsuarioClase
+            Return _credencial
         End Get
-        Set(ByVal value As Integer)
-            _idUsuarioClase = value
+        Set(ByVal value As String)
+            _credencial = value
+        End Set
+    End Property
+    Public Property Carrera() As Carrera
+        Get
+            Return _carrera
+        End Get
+        Set(ByVal value As Carrera)
+            _carrera = value
         End Set
     End Property
 #End Region
@@ -62,7 +77,7 @@ Public Class Usuario
                 NombreUsuario = Convert.ToString(dr("NOMBRE_USUARIO"))
                 FechaRegistro = Convert.ToDateTime(dr("FECHA_REG_USUARIO"))
                 'm_IdDependencia = Convert.ToInt32(dr("ID_DEPENDENCIA"))
-                IDUsuarioClase = Convert.ToInt32(dr("ID_USUARIOCLASE"))
+                'IDUsuarioClase = Convert.ToInt32(dr("ID_USUARIOCLASE"))
                 'Else
                 '    CleanData()
                 'End If
@@ -70,8 +85,16 @@ Public Class Usuario
         End If
     End Sub
 
-    'Analizar
-    Public Function InsertUpdate() As Boolean
+    Public Function Insert() As Boolean
+        Return InsertUpdate("sp_InsertUsuarios", ParameterDirection.Output)
+    End Function
+
+    Public Function Update() As Boolean
+        Return InsertUpdate("sp_UpdateUsuarios", ParameterDirection.Input, IDUsuario)
+    End Function
+
+    Private Function InsertUpdate(ByVal sp As String, ByRef pd As ParameterDirection,
+                                  Optional id As Integer = 0) As Boolean
         Dim cm As New SqlCommand
         Dim param As SqlParameter
         Dim cnn As New Conexion
@@ -79,20 +102,27 @@ Public Class Usuario
 
         cm.CommandType = CommandType.StoredProcedure
 
-        If IDUsuario = 0 Then
-            cm.CommandText = "sp_InsertUsuarios"
-        Else
-            cm.CommandText = "sp_UpdateUsuarios"
-        End If
+        'If IDUsuario = 0 Then
+        '    cm.CommandText = "sp_InsertUsuarios"
+        'Else
+        '    cm.CommandText = "sp_UpdateUsuarios"
+        'End If
+
+        cm.CommandText = sp
 
         param = cm.Parameters.Add("@Id_Usuario", SqlDbType.Int)
 
-        If IDUsuario = 0 Then
-            param.Direction = ParameterDirection.Output
-        Else
-            param.Direction = ParameterDirection.Input
-            param.Value = IDUsuario
+        'If IDUsuario = 0 Then
+        '    param.Direction = ParameterDirection.Output
+        'Else
+        '    param.Direction = ParameterDirection.Input
+        '    param.Value = IDUsuario
+        'End If
+
+        If Not id = 0 Then
+            param.Value = id
         End If
+        param.Direction = pd
 
         param = cm.Parameters.Add("@Nombre_Usuario", SqlDbType.VarChar)
         param.Direction = ParameterDirection.Input
@@ -104,15 +134,23 @@ Public Class Usuario
             param.Value = FechaRegistro
         End If
 
+        param = cm.Parameters.Add("@Credencial_Usuario", SqlDbType.VarChar)
+        param.Direction = ParameterDirection.Input
+        param.Value = CredencialUsuario
+
+        param = cm.Parameters.Add("@Carrera_Usuario", SqlDbType.Int)
+        param.Direction = ParameterDirection.Input
+        param.Value = Carrera.ID
+
         'param = cm.Parameters.Add("@Id_Dependencia", SqlDbType.Int)
         'param.Direction = ParameterDirection.Input
         'param.Value = m_IdDependencia
 
-        If IDUsuario = 0 Then
-            param = cm.Parameters.Add("@Id_UsuarioClase", SqlDbType.Int)
-            param.Direction = ParameterDirection.Input
-            param.Value = IDUsuarioClase
-        End If
+        'If IDUsuario = 0 Then
+        '    param = cm.Parameters.Add("@Id_UsuarioClase", SqlDbType.Int)
+        '    param.Direction = ParameterDirection.Input
+        '    param.Value = IDUsuarioClase
+        'End If
 
         'param = cm.Parameters.Add("@Activo", SqlDbType.Bit)
         'param.Direction = ParameterDirection.Input
@@ -121,7 +159,7 @@ Public Class Usuario
         result = cnn.ExecuteSP(cm)
 
         If result Then
-            If IDUsuario = 0 Then
+            If id = 0 Then
                 IDUsuario = cm.Parameters("@Id_Usuario").Value
             End If
         End If

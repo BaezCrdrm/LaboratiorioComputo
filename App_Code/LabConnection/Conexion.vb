@@ -88,6 +88,18 @@ Public Class Conexion
         End Try
     End Function
 
+    Public Function TestConnection() As Boolean
+        Try
+            connection = New SqlConnection(sqlCnn)
+            connection.Open()
+            connection.Close()
+            Return True
+        Catch ex As Exception
+            connection.Close()
+            Return False
+        End Try
+    End Function
+
     Private Sub excepcionProducida(ByVal funcion As String, ByVal excepcion As Exception)
         System.Diagnostics.Debug.WriteLine("Hubo un problema con la función '" + funcion + "'")
         System.Diagnostics.Debug.Write(excepcion.Message.ToString())

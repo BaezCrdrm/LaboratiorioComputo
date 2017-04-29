@@ -1,12 +1,11 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="EntradaMaq.aspx.vb" Inherits="EntradaMaq" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="SalidaMaquina.aspx.vb" Inherits="SalidaMaquina" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <title>Entrada de Máquinas</title>
+    <title>Salida de Máquinas</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/MaquinasSistema.css" rel="stylesheet" />
     <link href="Estilo/Tables.css" rel="stylesheet" />
@@ -69,15 +68,9 @@
 
     <section id="principal">
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
-        <h2 class="titulo_pagina">Entrada de Máquinas</h2>
+        <h2 class="titulo_pagina">Salida de Máquinas</h2>
         
         <form id="form1" runat="server">
-            <div id="divCredencial">
-                <label>Número de credencial</label>
-                <asp:TextBox ID="txtNumUsuario" runat="server" /><br />
-                <asp:Label ID="lblNomlabel" runat="server" />
-            </div><br />
-
             <div id="divEstados">            
             <ul id="listaEstados">
                 <li>
@@ -119,3 +112,4 @@
     </section>
 </body>
 </html>
+

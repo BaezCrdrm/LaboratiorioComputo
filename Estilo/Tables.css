@@ -1,0 +1,13 @@
+﻿/*Tablas de maquinas*/
+.table_header {
+    font-weight:bold;
+    text-align:center;
+}
+
+td {
+    border-bottom:1px solid;
+}
+
+.lblMaqNum {
+    font-weight:bold;
+}
