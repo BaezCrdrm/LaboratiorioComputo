@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Salida de Máquinas</title>
+    <title>Tiempo Máquinas</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/MaquinasSistema.css" rel="stylesheet" />
     <link href="Estilo/Tables.css" rel="stylesheet" />
@@ -68,7 +68,7 @@
 
     <section id="principal">
         <h1 class="titulo_inicio">Laboratorio de Cómputo</h1>
-        <h2 class="titulo_pagina">Salida de Máquinas</h2>
+        <h2 class="titulo_pagina">Tiempo máquinas</h2>
         
         <form id="form1" runat="server">
             <div id="divEstados">            

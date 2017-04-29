@@ -65,7 +65,7 @@ Partial Class NavegaSalida
             Dim query As String = "UPDATE MAQUINAS SET BANDERA_MAQ = 0 WHERE ID_MAQUINA = '" & id & "'"
             con.ExecuteQuery(query)
 
-            query = String.Format("DELETE FROM UTILIZA WHERE ID_MAQ = '{0}'",
+            query = String.Format("DELETE FROM UTILIZA WHERE ID_MAQUINA = {0}",
                                   id)
             con.ExecuteQuery(query)
             Response.Redirect("SalidaMaquina.aspx")
