@@ -30,8 +30,12 @@ Partial Class NavegaSalida
 
     Public Function getData() As Boolean
         Dim con As New Conexion
-        Dim query As String = String.Format("SELECT UTILIZA.ID_UTILIZA, UTILIZA.ID_USUARIO, UTILIZA.ID_MAQUINA, USUARIOS.NUM_CREDENCIAL, USUARIOS.NOMBRE_USUARIO, UTILIZA.HORA_ENTRADA, MAQUINAS.NUMERO_MAQ FROM UTILIZA INNER JOIN MAQUINAS ON MAQUINAS.ID_MAQUINA = UTILIZA.ID_MAQUINA AND UTILIZA.ID_MAQUINA = {0} INNER JOIN USUARIOS ON USUARIOS.ID_USUARIO = UTILIZA.ID_USUARIO",
-            Request.QueryString("id").ToString().Trim())
+        Dim query As String = String.Format("SELECT UTILIZA.ID_UTILIZA, UTILIZA.ID_USUARIO, UTILIZA.ID_MAQUINA, " &
+                                            "USUARIOS.NUM_CREDENCIAL, USUARIOS.NOMBRE_USUARIO, UTILIZA.HORA_ENTRADA, " &
+                                            "MAQUINAS.NUMERO_MAQ FROM UTILIZA " &
+                                            "INNER JOIN MAQUINAS ON MAQUINAS.ID_MAQUINA = UTILIZA.ID_MAQUINA " &
+                                            "AND UTILIZA.ID_MAQUINA = {0} INNER JOIN USUARIOS ON USUARIOS.ID_USUARIO = UTILIZA.ID_USUARIO",
+                                            Request.QueryString("id").ToString().Trim())
         ds = con.GetRows(query)
         If ds.Tables.Count > 0 Then
             dt = ds.Tables(0)
