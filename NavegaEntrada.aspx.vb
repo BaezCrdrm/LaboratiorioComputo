@@ -12,9 +12,8 @@ Partial Class NavegaEntrada
     Private Sub NavegaEntrada_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Dim cuenta As String = Request.QueryString("credencial").ToString().Trim()
-            Dim maq As Integer = Integer.Parse(Request.QueryString("id").ToString().Trim())
             'Verificar estado (ocupado/desocupado) de maquina
-            If verificaDisp(maq) Then
+            If verificaDisp(Integer.Parse(Request.QueryString("id").ToString().Trim())) Then
                 'Verificar alta del usuario
                 If validaUsuario(cuenta) Then
                     'Cargar datos del usuario y de máquina
@@ -25,7 +24,7 @@ Partial Class NavegaEntrada
                     lblNombre.Text = usuario.NombreUsuario
                     lblFecha.Text = fecha.Date.ToLongDateString()
                     lblEntrada.Text = fecha.ToString("HH:mm:ss")
-                    lblMaquina.Text = maq.ToString()
+                    lblMaquina.Text = Request.QueryString("maq").ToString().Trim()
                 Else
                     ScriptManager.RegisterStartupScript(Me, Page.GetType, "script", "alertaErrorUsuario();", True)
                 End If
@@ -68,6 +67,10 @@ Partial Class NavegaEntrada
         Else
             Return False
         End If
+    End Function
+
+    Private Function validaMaq(id As Integer) As Boolean
+
     End Function
 
     Private Function cargaDatosUsuario(ByVal numCredencial As String) As Usuario
