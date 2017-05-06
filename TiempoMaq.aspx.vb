@@ -50,21 +50,23 @@ Partial Class TiempoMaq
                                     Dim dataDr As DataRow = dataDt.Rows(0)
                                     fecha = Convert.ToDateTime(dataDr("HORA_ENTRADA"))
 
-                                    Dim ts As System.TimeSpan = DateTime.Now.TimeOfDay - fecha.TimeOfDay
-                                    If ts.Hours < 2 Then
+                                    Dim ts As System.TimeSpan = DateTime.Now - fecha
+                                    If ts.Hours < 2 And ts.Days = 0 Then
                                         img.ImageUrl = "imagenes\machine2H.PNG"
-                                    ElseIf ts.Hours < 3 Then
+                                    ElseIf ts.Hours < 3 And ts.Days = 0 Then
                                         img.ImageUrl = "imagenes\machine1H.PNG"
-                                    ElseIf ts.Hours >= 3 Then
+                                    ElseIf ts.Hours >= 3 Or ts.Days > 0 Then
                                         img.ImageUrl = "imagenes\machineOc.PNG"
                                     End If
 
                                     Dim strInfo As String = String.Format("NOMBRE: {0}" & vbNewLine &
                                                                           "CREDENCIAL: {1}" & vbNewLine &
-                                                                          "HORA DE ENTRADA: {2}" & vbNewLine &
-                                                                          "TIEMPO: {3:%h} HORAS {3:%m} MINUTOS",
+                                                                          "FECHA DE ENTRADA: {2}" & vbNewLine &
+                                                                          "HORA DE ENTRADA: {3}" & vbNewLine &
+                                                                          "TIEMPO: {4:%h} HORAS {4:%m} MINUTOS",
                                                                           Convert.ToString(dataDr("NOMBRE_USUARIO")),
                                                                           Convert.ToString(dataDr("NUM_CREDENCIAL")),
+                                                                          fecha.Date.ToShortDateString(),
                                                                           fecha.TimeOfDay.ToString(), ts)
                                     img.ToolTip = strInfo
                                 Else
