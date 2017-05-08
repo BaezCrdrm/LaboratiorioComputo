@@ -1,5 +1,5 @@
 ﻿#form1 {
-    width:220px;
+    width:250px;
     margin-left:auto;
     margin-right:auto;
     margin-top:50px;
@@ -10,9 +10,12 @@
         font-family:Arial;
     }
 
-    #btnGuardar {
-        width:100px !important;
+    #btnGoBack {
         float:right;
+    }
+
+    #btnGuardar {
+        float:left;
     }
 
     #form1 > input, #txtInfo {

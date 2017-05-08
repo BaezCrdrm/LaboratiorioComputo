@@ -40,9 +40,9 @@
             <%--<asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
                 CssClass="goBack" runat="server" AlternateText="Regresar" 
                 OnClientClick="closeTab()" ImageAlign="Top" title="Regresar" />--%>
-            <asp:Button ID="btnGoBack" CssClass="goBack" runat="server" 
+            <asp:Button ID="btnGoBack" CssClass="formButton" runat="server" 
                 AlternateText="Regresar" ImageAlign="Top" text="Cancelar" />
-            <asp:Button ID="btnGuardar" Text="Guardar" runat="server" />
+            <asp:Button ID="btnGuardar" Text="Guardar" CssClass="formButton" runat="server" />
 
         </form>
     </section>

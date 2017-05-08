@@ -30,8 +30,8 @@
             <label class="lblMant">Abreviatura</label><br />
             <asp:TextBox ID="txtAbv" runat="server"></asp:TextBox><br />
             <asp:Label ID="lblStatus" runat="server"></asp:Label><br />
-            <asp:Button ID="btnGuardar" runat="server" Text="Agregar" />
-            <asp:Button ID="btnGoBack" CssClass="goBack" runat="server" 
+            <asp:Button ID="btnGuardar" CssClass="formButton" runat="server" Text="Agregar" />
+            <asp:Button ID="btnGoBack" CssClass="formButton" runat="server" 
                 AlternateText="Regresar" Text="Cancelar" />
         </form>        
     </section>
