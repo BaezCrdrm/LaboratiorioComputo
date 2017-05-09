@@ -22,12 +22,18 @@ function alertaErrorUsuario()
     if(opc==true)
     {
         //Cambiar localización de redireccionamiento
-        location.href = "MenuUsuario.aspx?retorno=true";
+        location.href = "RegistroUsuario.aspx?retorno=true";
     }
     else {
         location.href = "EntradaMaq.aspx";
     }
 
+}
+
+function alertMaquinaUtilizada(message)
+{
+    alert(message);
+    location.href = "EntradaMaq.aspx";
 }
 
 function alertMessages(message)

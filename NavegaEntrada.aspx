@@ -59,6 +59,7 @@
         <form id="form1" runat="server">
             <table id="tbEntrada">
                 <tr>
+                    <td></td>
                     <td>
                         <asp:Label ID="lblError" Text="" runat="server" />
                     </td>
