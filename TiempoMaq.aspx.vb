@@ -60,14 +60,9 @@ Partial Class TiempoMaq
                                     End If
 
                                     Dim strInfo As String = String.Format("NOMBRE: {0}" & vbNewLine &
-                                                                          "CREDENCIAL: {1}" & vbNewLine &
-                                                                          "FECHA DE ENTRADA: {2}" & vbNewLine &
-                                                                          "HORA DE ENTRADA: {3}" & vbNewLine &
-                                                                          "TIEMPO: {4:%h} HORAS {4:%m} MINUTOS",
+                                                                          "TIEMPO:   {1:%h} HORAS {1:%m} MINUTOS",
                                                                           Convert.ToString(dataDr("NOMBRE_USUARIO")),
-                                                                          Convert.ToString(dataDr("NUM_CREDENCIAL")),
-                                                                          fecha.Date.ToShortDateString(),
-                                                                          fecha.TimeOfDay.ToString(), ts)
+                                                                          ts)
                                     img.ToolTip = strInfo
                                 Else
                                     img.ImageUrl = "imagenes\machineD.png"
