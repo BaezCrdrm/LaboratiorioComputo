@@ -99,11 +99,11 @@ Partial Class NavegaEntrada
     Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
             Dim con As New Conexion
-            Dim query As String = "UPDATE MAQUINAS SET BANDERA_MAQ = 1 WHERE ID_MAQUINA = '" & lblMaquina.Text & "'"
+            Dim query As String = "UPDATE MAQUINAS SET BANDERA_MAQ = 1 WHERE ID_MAQUINA = '" & Request.QueryString("id").ToString().Trim() & "'"
             con.ExecuteQuery(query)
 
             query = String.Format("INSERT INTO UTILIZA (ID_USUARIO, ID_MAQUINA, HORA_ENTRADA) VALUES ({0}, {1}, '{2}')",
-                              usuario.IDUsuario, lblMaquina.Text, fecha.ToString("dd/MM/yyyy HHH:mm:ss"))
+                              usuario.IDUsuario, Integer.Parse(Request.QueryString("id").ToString().Trim()), fecha.ToString("dd/MM/yyyy HHH:mm:ss"))
             con.ExecuteQuery(query)
             Response.Redirect("EntradaMaq.aspx")
         Catch ex As Exception

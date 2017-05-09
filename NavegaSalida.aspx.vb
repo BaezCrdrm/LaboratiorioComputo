@@ -15,10 +15,14 @@ Partial Class NavegaSalida
     Private Sub NavegaSalida_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             If getData() Then
+                Dim now As DateTime = DateTime.Now
+
                 lblCredencial.Text = usuario.CredencialUsuario
                 lblNombre.Text = usuario.NombreUsuario
-                lblFecha.Text = fechaEntrada.ToString("dd MMMM yyyy")
                 lblEntrada.Text = fechaEntrada.ToShortTimeString()
+                lblSalida.Text = now.ToShortTimeString()
+                Dim time As TimeSpan = now - fechaEntrada
+                lblTiempo.Text = String.Format("{0:%h} Horas {0:%m} minutos", time)
                 lblMaquina.Text = maquina.Numero
             Else
                 Response.Redirect("SalidaMaquina.aspx")

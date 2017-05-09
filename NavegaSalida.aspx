@@ -62,14 +62,7 @@
                         <asp:Label ID="lblError" Text="" runat="server" />
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label class="lblInfo">Numero de credencial</label>
-                    </td>
-                    <td>
-                        <asp:Label ID="lblCredencial" CssClass="lblDatos" Text="" runat="server" />
-                    </td>
-                </tr>
+                
                 <tr>
                     <td>
                         <label class="lblInfo">Nombre</label>
@@ -80,10 +73,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="lblInfo">Fecha de entrada</label>
+                        <label class="lblInfo">Numero de credencial</label>
                     </td>
                     <td>
-                        <asp:Label ID="lblFecha" CssClass="lblDatos" Text="" runat="server" />
+                        <asp:Label ID="lblCredencial" CssClass="lblDatos" Text="" runat="server" />
                     </td>
                 </tr>
                 <tr>
@@ -92,6 +85,22 @@
                     </td>
                     <td>
                         <asp:Label ID="lblEntrada" CssClass="lblDatos" Text="" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="lblInfo">Hora de salida</label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblSalida" CssClass="lblDatos" Text="" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="lblInfo">Tiempo total</label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTiempo" CssClass="lblDatos" Text="" runat="server" />
                     </td>
                 </tr>
                 <tr>
