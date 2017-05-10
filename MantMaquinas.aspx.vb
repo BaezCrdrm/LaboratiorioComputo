@@ -1,8 +1,6 @@
 ﻿
 Partial Class MantMaquinas
     Inherits System.Web.UI.Page
-    Shared mostrar As Boolean
-    Shared activa As Boolean
     Private action As String = "new"
 
 
@@ -19,7 +17,7 @@ Partial Class MantMaquinas
                         Dim id As Integer = Convert.ToInt32(Request.QueryString("id"))
                         cargaDatos(id)
                     Catch ex As Exception
-
+                        System.Diagnostics.Debug.Write(ex.Message)
                     End Try
                 End If
                 btnGuardar.Text = "Actualizar"
@@ -32,20 +30,17 @@ Partial Class MantMaquinas
         txtNumero.Text = maquina.Numero
         txtInfo.Text = maquina.Info.Trim()
         If Not Page.IsPostBack Then
-            mostrar = maquina.Mostrar
-            chkMostrar.Checked = mostrar
+            chkMostrar.Checked = maquina.Mostrar
         End If
 
         If (maquina.Bandera = 1 Or maquina.Bandera = 0) And Not Page.IsPostBack Then
-            activa = True
-            chkActiva.Checked = activa
+            chkActiva.Checked = True
             If maquina.Bandera = 1 Then
                 chkActiva.Text = "La maquina esta siendo utilizada."
                 chkActiva.Enabled = False
             End If
         ElseIf maquina.Bandera = 2 Then
-            activa = False
-            chkActiva.Checked = activa
+            chkActiva.Checked = False
             chkActiva.Text = "Activa"
             chkActiva.Enabled = True
         End If
@@ -58,13 +53,13 @@ Partial Class MantMaquinas
         If Not chkActiva.Enabled Then
             maquina.Bandera = 1
         Else
-            If activa = False Then
+            If chkActiva.Checked = True Then
                 maquina.Bandera = 0
             Else
                 maquina.Bandera = 2
             End If
         End If
-        maquina.Mostrar = mostrar
+        maquina.Mostrar = chkMostrar.Checked
 
         If Request.QueryString("action") = "modify" Then
             Maquina.ID = Convert.ToInt32(Request.QueryString("id"))
@@ -85,13 +80,6 @@ Partial Class MantMaquinas
                 lblStatus.Text = "No se pudo agregar"
             End If
         End If
-    End Sub
-    Protected Sub chkActiva_CheckedChanged(sender As Object, e As EventArgs) Handles chkActiva.CheckedChanged
-
-    End Sub
-    Protected Sub chkMostrar_CheckedChanged(sender As Object, e As EventArgs) Handles chkMostrar.CheckedChanged
-        mostrar = Not mostrar
-        chkMostrar.Checked = mostrar
     End Sub
     Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click
         Response.Redirect("MaquinasSistema.aspx")
