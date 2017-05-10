@@ -37,10 +37,38 @@ Partial Class SalidaMaquina
                         Case 1
                             img.ImageUrl = "imagenes\machineO.png"
                             img.Enabled = True
-                            'En esta cadena se puede agregar información extra de la máquina
-                            '   Ocupa https://msdn.microsoft.com/es-es/library/system.string.format(v=vs.110).aspx
-                            'Dim strLittleInfo As String = String.Format("Hola {0} Mundo", vbNewLine)
-                            'img.ToolTip = strLittleInfo
+
+                            ''''Información extra del equipo usando ToolTip
+                            '   Para habilitar se debe descomentar toda esta sección de código
+                            '   IMPORTANTE: NO COMENTAR/DESCOMENTAR NADA FUERA DE ESTE BLOQUE
+
+                            'Dim maqData As DataSet = verficaMaq(Convert.ToString(dr("ID_MAQUINA")))
+                            'Dim fecha As DateTime
+
+                            'If maqData.Tables.Count > 0 Then
+                            '    Dim dataDt As DataTable = maqData.Tables(0)
+                            '    If dataDt.Rows.Count > 0 Then
+                            '        Dim dataDr As DataRow = dataDt.Rows(0)
+                            '        fecha = Convert.ToDateTime(dataDr("HORA_ENTRADA"))
+
+                            '        Dim ts As System.TimeSpan = DateTime.Now - fecha
+                            '        Dim horas As Integer = 0
+                            '        If ts.Days > 0 Then
+                            '            horas = ts.Days * 24
+                            '        End If
+                            '        horas = horas + ts.Hours
+
+                            '        Dim strInfo As String = String.Format("NOMBRE: {0}" & vbNewLine &
+                            '                                              "TIEMPO:   {1} HORAS {2:%m} MINUTOS",
+                            '                                              Convert.ToString(dataDr("NOMBRE_USUARIO")),
+                            '                                              horas, ts)
+                            '        img.ToolTip = strInfo
+                            '    End If
+                            'End If
+
+                            '''' Fin de información extra
+                            '   IMPORTANTE: NO COMENTAR/DESCOMENTAR NADA FUERA DE ESTE BLOQUE
+
                         Case 2
                             img.ImageUrl = "imagenes\machineN.png"
                             img.Enabled = False
@@ -61,6 +89,17 @@ Partial Class SalidaMaquina
             End If
         End If
     End Sub
+
+    Private Function verficaMaq(ByVal id As String) As DataSet
+        Dim query As String = String.Format("SELECT MAQUINAS.ID_MAQUINA, UTILIZA.HORA_ENTRADA, " &
+                                            "USUARIOS.ID_USUARIO, USUARIOS.NOMBRE_USUARIO, USUARIOS.NUM_CREDENCIAL " &
+                                            "FROM UTILIZA INNER JOIN MAQUINAS ON UTILIZA.ID_MAQUINA = MAQUINAS.ID_MAQUINA " &
+                                            "INNER JOIN USUARIOS ON UTILIZA.ID_USUARIO = USUARIOS.ID_USUARIO " &
+                                            "WHERE MAQUINAS.ID_MAQUINA = {0} ORDER BY NUMERO_MAQ", id)
+        Dim c As New Conexion
+        Dim data As DataSet = c.GetRows(query)
+        Return data
+    End Function
 
     Protected Sub salidaMaquina_Click(sender As Object, e As ImageClickEventArgs)
         Dim btnTemp = DirectCast(sender, ImageButton)
