@@ -21,8 +21,13 @@ Partial Class NavegaSalida
                 lblNombre.Text = usuario.NombreUsuario
                 lblEntrada.Text = fechaEntrada.ToShortTimeString()
                 lblSalida.Text = now.ToShortTimeString()
-                Dim time As TimeSpan = now - fechaEntrada
-                lblTiempo.Text = String.Format("{0:%h} Horas {0:%m} minutos", time)
+                Dim ts As TimeSpan = now - fechaEntrada
+                Dim horas As Integer = 0
+                If ts.Days > 0 Then
+                    horas = ts.Days * 24
+                End If
+                horas = horas + ts.Hours
+                lblTiempo.Text = String.Format("{0} Horas {1:%m} minutos", horas, ts)
                 lblMaquina.Text = maquina.Numero
             Else
                 Response.Redirect("SalidaMaquina.aspx")

@@ -59,10 +59,16 @@ Partial Class TiempoMaq
                                         img.ImageUrl = "imagenes\machineOc.PNG"
                                     End If
 
+                                    Dim horas As Integer = 0
+                                    If ts.Days > 0 Then
+                                        horas = ts.Days * 24
+                                    End If
+                                    horas = horas + ts.Hours
+
                                     Dim strInfo As String = String.Format("NOMBRE: {0}" & vbNewLine &
-                                                                          "TIEMPO:   {1:%h} HORAS {1:%m} MINUTOS",
+                                                                          "TIEMPO:   {1} HORAS {2:%m} MINUTOS",
                                                                           Convert.ToString(dataDr("NOMBRE_USUARIO")),
-                                                                          ts)
+                                                                          horas, ts)
                                     img.ToolTip = strInfo
                                 Else
                                     img.ImageUrl = "imagenes\machineD.png"
