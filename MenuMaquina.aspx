@@ -9,6 +9,8 @@
     <title>Acceso a laboratorio</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/" rel="stylesheet" />
+
+    <script src="Scripts.js"></script>
 </head>
 <body>
     <header>

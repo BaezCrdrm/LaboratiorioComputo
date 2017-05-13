@@ -9,6 +9,8 @@
     <title>Login</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Login.css" rel="stylesheet" />
+
+    <script src="Scripts.js"></script>
 </head>
 <body>
     <header>

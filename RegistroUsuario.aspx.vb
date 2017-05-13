@@ -23,7 +23,6 @@ Partial Class RegistroUsuario
                                                                   "No se pudo conectar con la base de datos"), True)
             Else
                 cargaCarreras()
-
             End If
         End If
         lblError.Text = ""

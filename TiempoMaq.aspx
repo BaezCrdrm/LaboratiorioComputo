@@ -55,6 +55,8 @@
             margin-bottom:10px;
         }
     </style>
+
+    <script src="Scripts.js"></script>
 </head>
 <body>
     <header>
