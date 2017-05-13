@@ -28,21 +28,17 @@
                 }
 
         #divButtons {
-            width: 400px;
+            width: 380px;
+            height: 30px;
             margin-top: 30px;
         }
 
-            .acpCanButton {
-                width:80px;
-                height: 33px;
-            }
-
             #btnGoBack {
-                float:left;
+                float:right;
             }
 
             #btnAdd {
-                float:right;
+                float:left;
             }
     </style>
 
@@ -63,6 +59,7 @@
         <form id="form1" runat="server">
             <table id="tbEntrada">
                 <tr>
+                    <td></td>
                     <td>
                         <asp:Label ID="lblError" Text="" runat="server" />
                     </td>
@@ -110,9 +107,9 @@
             </table>
 
             <div id="divButtons">
-                <asp:Button ID="btnGoBack" CssClass="acpCanButton" runat="server" 
+                <asp:Button ID="btnGoBack" CssClass="formButton" runat="server" 
                 AlternateText="Regresar" Text="Cancelar" />
-                <asp:Button ID="btnAdd" CssClass="acpCanButton" Text="Aceptar" runat="server" />
+                <asp:Button ID="btnAdd" CssClass="formButton" Text="Aceptar" runat="server" />
             </div>
         </form>
     </section>

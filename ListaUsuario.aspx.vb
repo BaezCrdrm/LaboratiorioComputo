@@ -21,8 +21,6 @@ Partial Class ListaUsuario
 
     Private Sub cargaDatos(ByVal nombre As String)
         Dim con As New Conexion
-        'Dim query As String = String.Format("SELECT NOMBRE_USUARIO FROM USUARIOS WHERE NOMBRE_USUARIO LIKE '%{0}%'",
-        '                                    nombre)
 
         Dim query As String = String.Format("SELECT USUARIOS.ID_USUARIO, USUARIOS.NOMBRE_USUARIO, " &
                                             "USUARIOS.NUM_CREDENCIAL, USUARIOS.FECHA_REG_USUARIO, " &

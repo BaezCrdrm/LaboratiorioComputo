@@ -28,21 +28,16 @@
                 }
 
         #divButtons {
-            width: 400px;
+            width: 380px;
             margin-top: 30px;
         }
 
-            .acpCanButton {
-                width:80px;
-                height: 33px;
-            }
-
             #btnGoBack {
-                float:left;
+                float:right;
             }
 
             #btnAdd {
-                float:right;
+                float:left;
             }
     </style>
 
@@ -67,14 +62,7 @@
                         <asp:Label ID="lblError" Text="" runat="server" />
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        <label class="lblInfo">Numero de credencial</label>
-                    </td>
-                    <td>
-                        <asp:Label ID="lblCredencial" CssClass="lblDatos" Text="" runat="server" />
-                    </td>
-                </tr>
+                
                 <tr>
                     <td>
                         <label class="lblInfo">Nombre</label>
@@ -85,10 +73,10 @@
                 </tr>
                 <tr>
                     <td>
-                        <label class="lblInfo">Fecha de entrada</label>
+                        <label class="lblInfo">Numero de credencial</label>
                     </td>
                     <td>
-                        <asp:Label ID="lblFecha" CssClass="lblDatos" Text="" runat="server" />
+                        <asp:Label ID="lblCredencial" CssClass="lblDatos" Text="" runat="server" />
                     </td>
                 </tr>
                 <tr>
@@ -97,6 +85,22 @@
                     </td>
                     <td>
                         <asp:Label ID="lblEntrada" CssClass="lblDatos" Text="" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="lblInfo">Hora de salida</label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblSalida" CssClass="lblDatos" Text="" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="lblInfo">Tiempo total</label>
+                    </td>
+                    <td>
+                        <asp:Label ID="lblTiempo" CssClass="lblDatos" Text="" runat="server" />
                     </td>
                 </tr>
                 <tr>
@@ -110,9 +114,9 @@
             </table>
 
             <div id="divButtons">
-                <asp:Button ID="btnGoBack" CssClass="acpCanButton" runat="server" 
+                <asp:Button ID="btnGoBack" CssClass="formButton" runat="server" 
                 AlternateText="Regresar" Text="Cancelar" />
-                <asp:Button ID="btnAdd" CssClass="acpCanButton" Text="Aceptar" runat="server" />
+                <asp:Button ID="btnAdd" CssClass="formButton" Text="Aceptar" runat="server" />
             </div>
         </form>
     </section>

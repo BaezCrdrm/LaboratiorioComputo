@@ -15,10 +15,19 @@ Partial Class NavegaSalida
     Private Sub NavegaSalida_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             If getData() Then
+                Dim now As DateTime = DateTime.Now
+
                 lblCredencial.Text = usuario.CredencialUsuario
                 lblNombre.Text = usuario.NombreUsuario
-                lblFecha.Text = fechaEntrada.ToString("dd MMMM yyyy")
                 lblEntrada.Text = fechaEntrada.ToShortTimeString()
+                lblSalida.Text = now.ToShortTimeString()
+                Dim ts As TimeSpan = now - fechaEntrada
+                Dim horas As Integer = 0
+                If ts.Days > 0 Then
+                    horas = ts.Days * 24
+                End If
+                horas = horas + ts.Hours
+                lblTiempo.Text = String.Format("{0} Horas {1:%m} minutos", horas, ts)
                 lblMaquina.Text = maquina.Numero
             Else
                 Response.Redirect("SalidaMaquina.aspx")
@@ -30,8 +39,12 @@ Partial Class NavegaSalida
 
     Public Function getData() As Boolean
         Dim con As New Conexion
-        Dim query As String = String.Format("SELECT UTILIZA.ID_UTILIZA, UTILIZA.ID_USUARIO, UTILIZA.ID_MAQUINA, USUARIOS.NUM_CREDENCIAL, USUARIOS.NOMBRE_USUARIO, UTILIZA.HORA_ENTRADA, MAQUINAS.NUMERO_MAQ FROM UTILIZA INNER JOIN MAQUINAS ON MAQUINAS.ID_MAQUINA = UTILIZA.ID_MAQUINA AND UTILIZA.ID_MAQUINA = {0} INNER JOIN USUARIOS ON USUARIOS.ID_USUARIO = UTILIZA.ID_USUARIO",
-            Request.QueryString("id").ToString().Trim())
+        Dim query As String = String.Format("SELECT UTILIZA.ID_UTILIZA, UTILIZA.ID_USUARIO, UTILIZA.ID_MAQUINA, " &
+                                            "USUARIOS.NUM_CREDENCIAL, USUARIOS.NOMBRE_USUARIO, UTILIZA.HORA_ENTRADA, " &
+                                            "MAQUINAS.NUMERO_MAQ FROM UTILIZA " &
+                                            "INNER JOIN MAQUINAS ON MAQUINAS.ID_MAQUINA = UTILIZA.ID_MAQUINA " &
+                                            "AND UTILIZA.ID_MAQUINA = {0} INNER JOIN USUARIOS ON USUARIOS.ID_USUARIO = UTILIZA.ID_USUARIO",
+                                            Request.QueryString("id").ToString().Trim())
         ds = con.GetRows(query)
         If ds.Tables.Count > 0 Then
             dt = ds.Tables(0)
@@ -65,7 +78,7 @@ Partial Class NavegaSalida
             Dim query As String = "UPDATE MAQUINAS SET BANDERA_MAQ = 0 WHERE ID_MAQUINA = '" & id & "'"
             con.ExecuteQuery(query)
 
-            query = String.Format("DELETE FROM UTILIZA WHERE ID_MAQ = '{0}'",
+            query = String.Format("DELETE FROM UTILIZA WHERE ID_MAQUINA = {0}",
                                   id)
             con.ExecuteQuery(query)
             Response.Redirect("SalidaMaquina.aspx")

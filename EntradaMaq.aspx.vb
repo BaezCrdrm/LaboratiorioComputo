@@ -42,6 +42,7 @@ Partial Class EntradaMaq
                             img.Enabled = False
                     End Select
 
+                    img.AlternateText = Convert.ToString(dr("NUMERO_MAQ"))
                     tc.Controls.Add(img)
                     tc.Controls.Add(New LiteralControl("<br />"))
                     tc.Controls.Add(lblMaq)
@@ -64,7 +65,7 @@ Partial Class EntradaMaq
             'If Not txtNumUsuario.Text.Trim = "" And txtNumUsuario.Text.Count > 8 Then
             If Not txtNumUsuario.Text.Trim = "" Then
                 Dim tempId As String() = Split(btnTemp.ID, "_")
-                Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1) & "&credencial=" & txtNumUsuario.Text.Trim)
+                Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1) & "&credencial=" & txtNumUsuario.Text.Trim & "&maq=" & btnTemp.AlternateText.ToString())
             Else
                 lblNomlabel.Text = "Escriba un número de credencial válido"
             End If

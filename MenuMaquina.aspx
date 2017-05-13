@@ -26,7 +26,7 @@
             <div class="buttonsForm">
                 <asp:Button ID="btnEntrada" CssClass="buttons" runat="server" Text="Entrada máquina" />
                 <asp:Button ID="btnSalida" CssClass="buttons" runat="server" Text="Salida máquina" />             
-                <%--<asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Tiempo máquina" />--%>
+                <asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Tiempo máquina" />
             </div>
 
             <div ID="divGoToMenu">
