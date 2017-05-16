@@ -19,6 +19,11 @@
             margin-top:15px;
             margin-bottom:20px;
         }
+
+            #btnNuevo {
+                width: 110px;
+                height: 30px;
+            }
     </style>
 </head>
 <body>

@@ -35,6 +35,7 @@ Partial Class CarrerasSistema
                                 tc.Controls.Add(New LiteralControl(Convert.ToString(dr("DESCRIPCION"))))
                             Case 1
                                 tc.Controls.Add(New LiteralControl(Convert.ToString(dr("ABREVIATURA"))))
+                                tc.CssClass = "tdText"
                             Case 2
                                 Dim bt As New System.Web.UI.WebControls.Button
                                 bt.ID = "btn_" & Convert.ToString(dr("ID_CARRERA"))

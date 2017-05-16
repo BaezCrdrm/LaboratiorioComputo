@@ -29,14 +29,14 @@
                 <asp:Button ID="btnEntrada" CssClass="buttons" runat="server" Text="Entrada máquina" />
                 <asp:Button ID="btnSalida" CssClass="buttons" runat="server" Text="Salida máquina" />             
                 <asp:Button ID="btnListar" CssClass="buttons" runat="server" Text="Tiempo máquina" />
-            </div>
 
-            <div ID="divGoToMenu">
-                <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
-                    CssClass="goBack" runat="server" AlternateText="Regresar" 
-                    ImageAlign="Top" title="Menú administrador" OnClientClick="form1.target ='_self';"/>
-                <%--<asp:Label Text="Menú" CssClass="lblGoToMenu" runat="server" />   --%>             
-            </div>
+                <div ID="divGoToMenu">
+                    <asp:ImageButton ID="btnGoBack" ImageUrl="imagenes/left_arrow.png" 
+                        CssClass="goBack" runat="server" AlternateText="Regresar" 
+                        ImageAlign="Top" title="Menú administrador" OnClientClick="form1.target ='_self';"/>
+                    <%--<asp:Label Text="Menú" CssClass="lblGoToMenu" runat="server" />   --%>             
+                </div>
+            </div>            
         </form>
     </section>
 </body>

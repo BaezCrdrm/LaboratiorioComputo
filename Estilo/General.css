@@ -75,3 +75,7 @@ header {
 a, a:visited {
     color: blue;
 }
+
+#lblError {
+    color: red;
+}
