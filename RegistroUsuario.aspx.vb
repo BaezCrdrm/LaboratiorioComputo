@@ -43,7 +43,6 @@ Partial Class RegistroUsuario
 
                 If Not Page.IsPostBack Then
                     cargaDatosUsuario(Request.QueryString("id").ToString().Trim())
-
                 End If
             Else
 
@@ -136,7 +135,7 @@ Partial Class RegistroUsuario
                         Dim msg As String = "Se agregó al usuario exitosamente"
                         ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
                                                         String.Format("usuarioAgregado('{0}', '{1}');",
-                                                                      "true", msg), True)
+                                                                      regresaAEntradaMaq, msg), True)
                         'If regresaAEntradaMaq = True Then
                         '    Response.Redirect("EntradaMaq.aspx")
                         'Else
