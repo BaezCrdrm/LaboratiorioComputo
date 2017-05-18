@@ -47,38 +47,42 @@ Partial Class MantMaquinas
     End Sub
 
     Protected Sub btnGuardar_Click(sender As Object, e As EventArgs) Handles btnGuardar.Click
-        Dim maquina As New Maquina
-        maquina.Numero = txtNumero.Text.Trim
-        maquina.Info = txtInfo.Text.Trim
-        If Not chkActiva.Enabled Then
-            maquina.Bandera = 1
-        Else
-            If chkActiva.Checked = True Then
-                maquina.Bandera = 0
+        If Not (txtNumero.Text.Trim() = "") Then
+            Dim maquina As New Maquina
+            maquina.Numero = txtNumero.Text.Trim()
+            maquina.Info = txtInfo.Text.Trim()
+            If Not chkActiva.Enabled Then
+                maquina.Bandera = 1
             Else
-                maquina.Bandera = 2
+                If chkActiva.Checked = True Then
+                    maquina.Bandera = 0
+                Else
+                    maquina.Bandera = 2
+                End If
             End If
-        End If
-        maquina.Mostrar = chkMostrar.Checked
+            maquina.Mostrar = chkMostrar.Checked
 
-        If Request.QueryString("action") = "modify" Then
-            Maquina.ID = Convert.ToInt32(Request.QueryString("id"))
+            If Request.QueryString("action") = "modify" Then
+                maquina.ID = Convert.ToInt32(Request.QueryString("id"))
 
-            If (Maquina.Update(Maquina.ID)) Then
-                lblStatus.Text = "Se actualizó correctamente"
-                btnGoBack.Text = "Cerrar"
-                Response.Redirect("MaquinasSistema.aspx")
+                If (maquina.Update(maquina.ID)) Then
+                    lblStatus.Text = "Se actualizó correctamente"
+                    btnGoBack.Text = "Cerrar"
+                    Response.Redirect("MaquinasSistema.aspx")
+                Else
+                    lblStatus.Text = "No se pudo actualizar"
+                End If
             Else
-                lblStatus.Text = "No se pudo actualizar"
+                If (maquina.Insert()) Then
+                    lblStatus.Text = "Se agregó correctamente"
+                    btnGoBack.Text = "Cerrar"
+                    Response.Redirect("MaquinasSistema.aspx")
+                Else
+                    lblStatus.Text = "No se pudo agregar"
+                End If
             End If
         Else
-            If (maquina.Insert()) Then
-                lblStatus.Text = "Se agregó correctamente"
-                btnGoBack.Text = "Cerrar"
-                Response.Redirect("MaquinasSistema.aspx")
-            Else
-                lblStatus.Text = "No se pudo agregar"
-            End If
+            lblStatus.Text = "Ingrese un número de máquina"
         End If
     End Sub
     Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click

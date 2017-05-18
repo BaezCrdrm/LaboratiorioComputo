@@ -5,17 +5,24 @@
 
 .divData {
     margin-top: 20px;
-    max-width: 375px;
+    max-width: 400px;
     height: auto;
 }
 
     .divData > label {
         float:left;
         margin-right: 10px;
+        font-weight: bold;
     }
 
     .txtData {
         width: 150px;
+        height: 20px;
+    }
+
+    #btnBuscar {
+        width: 60px;    
+        height: 24px;    
     }
 
 #tableUsuarios {

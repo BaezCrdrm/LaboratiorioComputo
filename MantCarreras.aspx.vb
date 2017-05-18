@@ -29,27 +29,32 @@ Partial Class MantCarreras
         Dim carrera As New Carrera
         carrera.Descripcion = txtNombre.Text.Trim().ToUpper()
         carrera.Abreviatura = txtAbv.Text.Trim().ToUpper()
-        If action = "modify" Then
-            carrera.ID = Convert.ToInt32(Request.QueryString("id").ToString())
-            Try
-                If (carrera.Update(carrera.ID)) Then
-                    lblStatus.Text = "Se ha actualizado correctamente"
-                    btnGoBack.Text = "Cerrar"
-                End If
-            Catch ex As Exception
-                lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
-            End Try
+
+        If Not (carrera.Descripcion = "") And Not (carrera.Abreviatura = "") Then
+            If action = "modify" Then
+                carrera.ID = Convert.ToInt32(Request.QueryString("id").ToString())
+                Try
+                    If (carrera.Update(carrera.ID)) Then
+                        lblStatus.Text = "Se ha actualizado correctamente"
+                        btnGoBack.Text = "Cerrar"
+                    End If
+                Catch ex As Exception
+                    lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
+                End Try
+            Else
+                Try
+                    If carrera.Insert() Then
+                        lblStatus.Text = "Carrera agregada correctamente"
+                        btnGoBack.Text = "Cerrar"
+                    Else
+                        lblStatus.Text = "No se pudo insertar carrera"
+                    End If
+                Catch ex As Exception
+                    lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
+                End Try
+            End If
         Else
-            Try
-                If carrera.Insert() Then
-                    lblStatus.Text = "Carrera agregada correctamente"
-                    btnGoBack.Text = "Cerrar"
-                Else
-                    lblStatus.Text = "No se pudo insertar carrera"
-                End If
-            Catch ex As Exception
-                lblStatus.Text = "Excepción producida: " & ex.Message.ToString()
-            End Try
+            lblStatus.Text = "Ingrese un nombre de carrera y abreviatura válido"
         End If
     End Sub
     Protected Sub btnGoBack_Click(sender As Object, e As EventArgs) Handles btnGoBack.Click

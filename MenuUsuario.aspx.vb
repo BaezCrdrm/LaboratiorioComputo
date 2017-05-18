@@ -21,6 +21,16 @@ Partial Class MenuUsuario
         End If
     End Sub
 
+    Protected Sub btnListar_Click(sender As Object, e As EventArgs) Handles btnListar.Click
+        If testConnection() Then
+            Response.Redirect("ListaUsuario.aspx")
+        End If
+    End Sub
+
+    Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
+        Response.Redirect("Default.aspx")
+    End Sub
+
     Private Function testConnection() As Boolean
         Dim con As New Conexion
         If con.TestConnection = False Then
@@ -32,10 +42,4 @@ Partial Class MenuUsuario
             Return True
         End If
     End Function
-    Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click
-        Response.Redirect("Default.aspx")
-    End Sub
-    Protected Sub btnListar_Click(sender As Object, e As EventArgs) Handles btnListar.Click
-        Response.Redirect("ListaUsuario.aspx")
-    End Sub
 End Class

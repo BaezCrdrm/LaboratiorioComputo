@@ -8,7 +8,33 @@
     <meta charset="utf-8" />
     <title>Login</title>
     <link href="Estilo/General.css" rel="stylesheet" />
-    <link href="Estilo/Login.css" rel="stylesheet" />
+    <style type="text/css">
+        .log {
+            width:180px;
+            margin-left:auto;
+            margin-right:auto;
+            margin-top: 50px;
+        }
+            .caja {
+                width:180px;
+            }
+
+            #btnAccept {
+                width: 80px;
+                height: 30px;
+                margin-top: 15px;
+
+                font-weight:bold;
+                float:right;
+            }
+
+            #lblError {
+                color: red;
+                clear:both;
+            }
+    </style>
+
+    <script src="Scripts.js"></script>
 </head>
 <body>
     <header>

@@ -5,7 +5,15 @@ Partial Class TiempoMaq
     Inherits System.Web.UI.Page
 
     Private Sub TiempoMaq_Load(sender As Object, e As EventArgs) Handles Me.Load
-        cargaMaquinas()
+        Dim con As New Conexion
+        If con.TestConnection = False Then
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
+                                                    String.Format("connectionFailed('{0}', '{1}');",
+                                                                  "MenuMaquina.aspx",
+                                                                  "No se pudo conectar con la base de datos"), True)
+        Else
+            cargaMaquinas()
+        End If
     End Sub
 
     Protected Sub btnGoBack_Click(sender As Object, e As ImageClickEventArgs) Handles btnGoBack.Click

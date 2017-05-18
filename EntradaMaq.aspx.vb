@@ -4,7 +4,16 @@ Partial Class EntradaMaq
     Inherits System.Web.UI.Page
 
     Private Sub EntradaMaq_Load(sender As Object, e As EventArgs) Handles Me.Load
-        cargaMaquinas()
+        Dim con As New Conexion
+        If con.TestConnection = False Then
+            txtNumUsuario.Enabled = False
+            ScriptManager.RegisterStartupScript(Me, Page.GetType, "script",
+                                                    String.Format("connectionFailed('{0}', '{1}');",
+                                                                  "MenuMaquina.aspx",
+                                                                  "No se pudo conectar con la base de datos"), True)
+        Else
+            cargaMaquinas()
+        End If
     End Sub
 
     Private Sub cargaMaquinas()
@@ -62,8 +71,8 @@ Partial Class EntradaMaq
     Protected Sub entradaMaquina_Click(sender As Object, e As ImageClickEventArgs)
         Dim btnTemp = DirectCast(sender, ImageButton)
         If btnTemp.Enabled Then
-            'If Not txtNumUsuario.Text.Trim = "" And txtNumUsuario.Text.Count > 8 Then
-            If Not txtNumUsuario.Text.Trim = "" Then
+            If Not txtNumUsuario.Text.Trim() = "" And txtNumUsuario.Text.Count > 8 And IsNumeric(txtNumUsuario.Text.Trim()) Then
+                'If Not txtNumUsuario.Text.Trim = "" And IsNumeric(txtNumUsuario.Text.Trim()) Then
                 Dim tempId As String() = Split(btnTemp.ID, "_")
                 Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1) & "&credencial=" & txtNumUsuario.Text.Trim & "&maq=" & btnTemp.AlternateText.ToString())
             Else
