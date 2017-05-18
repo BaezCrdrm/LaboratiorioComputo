@@ -71,8 +71,8 @@ Partial Class EntradaMaq
     Protected Sub entradaMaquina_Click(sender As Object, e As ImageClickEventArgs)
         Dim btnTemp = DirectCast(sender, ImageButton)
         If btnTemp.Enabled Then
-            'If Not txtNumUsuario.Text.Trim = "" And txtNumUsuario.Text.Count > 8 Then
-            If Not txtNumUsuario.Text.Trim = "" Then
+            If Not txtNumUsuario.Text.Trim() = "" And txtNumUsuario.Text.Count > 8 And IsNumeric(txtNumUsuario.Text.Trim()) Then
+                'If Not txtNumUsuario.Text.Trim = "" And IsNumeric(txtNumUsuario.Text.Trim()) Then
                 Dim tempId As String() = Split(btnTemp.ID, "_")
                 Response.Redirect("NavegaEntrada.aspx?id=" & tempId(1) & "&credencial=" & txtNumUsuario.Text.Trim & "&maq=" & btnTemp.AlternateText.ToString())
             Else
