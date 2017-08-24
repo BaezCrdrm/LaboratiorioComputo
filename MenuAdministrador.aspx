@@ -9,6 +9,14 @@
     <title>Menú Administrador</title>
     <link href="Estilo/General.css" rel="stylesheet" />
     <link href="Estilo/Login.css" rel="stylesheet" />
+    
+    <style>
+        #form1 {
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 </head>
 <body>
     <header>
